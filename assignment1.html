@@ -141,6 +141,24 @@
     transform: scale(1.03);
     box-shadow: 0 8px 25px rgba(183, 110, 121, 0.30);
 }
+
+  /* SMOOTH PAGE ENTRANCE */
+
+.container {
+    animation: pageEntrance 0.8s ease-out;
+}
+
+@keyframes pageEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}      
         
     </style>
 </head>
