@@ -5,7 +5,7 @@
 
     <style>
         body {
-            background-color: #fff5f8;
+           background: linear-gradient(135deg, #fff7fa 0%, #ffeef5 50%, #fff8fb 100%);
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
@@ -26,15 +26,66 @@
             margin: 15px 0 30px 0;
         }
 
-        .container {
-            background-color: white;
-            width: 60%;
-            margin: auto;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+       .container {
+    background: linear-gradient(145deg, #ffffff, #fffafd);
+    width: 60%;
+    margin: auto;
+    padding: 45px;
+    border-radius: 25px;
+    border: 3px solid #f3a0bd;
+    outline: 7px solid #ffe0eb;
+    outline-offset: 5px;
+    box-shadow:
+        0 10px 30px rgba(232, 93, 145, 0.18),
+        0 0 35px rgba(255, 182, 208, 0.25);
+}
+/* GIRLY TOP DECORATION */
 
+.top-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 25px;
+    font-size: 32px;
+}
+
+.top-decoration .main-bow {
+    font-size: 65px;
+    display: inline-block;
+    animation: bowFloat 2.5s ease-in-out infinite;
+}
+
+.top-decoration .small-bow {
+    font-size: 38px;
+    display: inline-block;
+    animation: bowFloat 3s ease-in-out infinite;
+}
+
+.top-decoration .heart {
+    color: #e85d91;
+    font-size: 30px;
+    display: inline-block;
+    animation: heartBeat 1.7s ease-in-out infinite;
+}
+
+@keyframes bowFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+}
         a {
             display: block;
             background-color: #f7d6df;
@@ -55,7 +106,15 @@
 <body>
 
     <div class="container">
-
+<div class="top-decoration">
+    <span class="heart">♡</span>
+    <span class="small-bow">🎀</span>
+    <span class="heart">♥</span>
+    <span class="main-bow">🎀</span>
+    <span class="heart">♡</span>
+    <span class="small-bow">🎀</span>
+    <span class="heart">♥</span>
+</div>
         <h1>Yasmeen Mohamed</h1>
 
         <h2>IE 355 - Fall 2026</h2>
