@@ -233,6 +233,25 @@ h2::after {
     filter: drop-shadow(0 5px 7px rgba(201, 79, 124, 0.25));
 }
 
+        .small-bow {
+    font-size: 42px;
+    line-height: 1;
+    display: inline-block;
+    filter: drop-shadow(0 3px 5px rgba(201, 79, 124, 0.20));
+}
+
+.small-bow:nth-of-type(2) {
+    transform: rotate(-12deg);
+}
+
+.small-bow:nth-of-type(4) {
+    transform: rotate(10deg);
+}
+
+.small-bow:nth-of-type(6) {
+    transform: rotate(-8deg);
+}
+
 .decor-heart {
     color: #e85d91;
     font-size: 24px;
@@ -283,378 +302,9 @@ h2::after {
     text-shadow: 0 0 10px rgba(232, 93, 145, 0.18);
 }
 
-       /* ===== SOFT SATIN GIRLY HEADER ===== */
+ 
 
-.hero-decoration {
-    position: relative;
-    width: 100%;
-    height: 210px;
-    margin: -15px 0 0 0;
-}
 
-/* ===== FLOWING RIBBON ===== */
-
-.ribbon-area {
-    position: absolute;
-    width: 78%;
-    height: 180px;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-}
-
-/* Long ribbon sides */
-
-.ribbon-tail {
-    position: absolute;
-    top: 78px;
-    width: 43%;
-    height: 34px;
-    z-index: 1;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #ffe4ed 0%,
-            #fbc2d5 18%,
-            #f28fb3 48%,
-            #f7adc7 72%,
-            #ffe0ea 100%
-        );
-
-    box-shadow:
-        0 8px 14px rgba(220, 90, 140, 0.13),
-        inset 0 5px 7px rgba(255,255,255,0.55),
-        inset 0 -5px 7px rgba(209,78,126,0.12);
-}
-
-/* Wavy left ribbon */
-
-.ribbon-tail-left {
-    right: 55%;
-    border-radius: 60% 15% 70% 30% / 70% 30% 70% 30%;
-    transform:
-        rotate(-4deg)
-        skewX(-18deg);
-}
-
-/* Wavy right ribbon */
-
-.ribbon-tail-right {
-    left: 55%;
-    border-radius: 15% 60% 30% 70% / 30% 70% 30% 70%;
-    transform:
-        rotate(4deg)
-        skewX(18deg);
-}
-
-/* ===== CENTER SATIN BOW ===== */
-
-.main-bow {
-    position: absolute;
-    width: 330px;
-    height: 175px;
-    left: 50%;
-    top: 2px;
-    transform: translateX(-50%);
-    z-index: 6;
-
-    filter:
-        drop-shadow(0 10px 12px rgba(211, 91, 137, 0.20));
-}
-
-/* Bow loops */
-
-.bow-loop {
-    position: absolute;
-    top: 18px;
-    width: 155px;
-    height: 90px;
-
-    background:
-        radial-gradient(
-            ellipse at 50% 20%,
-            rgba(255,255,255,0.75),
-            transparent 35%
-        ),
-        linear-gradient(
-            145deg,
-            #ffe3ed 0%,
-            #f9bdd2 25%,
-            #ef8db2 52%,
-            #f8b6ce 76%,
-            #ffe5ee 100%
-        );
-
-    border: 1px solid rgba(223, 105, 150, 0.18);
-
-    box-shadow:
-        inset 10px 7px 16px rgba(255,255,255,0.35),
-        inset -10px -8px 15px rgba(203,80,127,0.13);
-}
-
-/* Left bow loop */
-
-.bow-left {
-    left: 5px;
-
-    border-radius:
-        80% 35% 52% 72% /
-        60% 48% 58% 65%;
-
-    transform:
-        rotate(8deg)
-        skewX(-7deg);
-}
-
-/* Right bow loop */
-
-.bow-right {
-    right: 5px;
-
-    border-radius:
-        35% 80% 72% 52% /
-        48% 60% 65% 58%;
-
-    transform:
-        rotate(-8deg)
-        skewX(7deg);
-}
-
-/* ===== CENTER KNOT ===== */
-
-.bow-center {
-    position: absolute;
-    width: 54px;
-    height: 66px;
-
-    left: 50%;
-    top: 31px;
-
-    transform: translateX(-50%);
-
-    z-index: 10;
-
-    border-radius: 42%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ed8fb1,
-            #ffd8e5 28%,
-            #f5a4c1 52%,
-            #ffe1ea 73%,
-            #e989ac
-        );
-
-    border: 1px solid rgba(215, 92, 138, 0.22);
-
-    box-shadow:
-        inset 6px 0 8px rgba(255,255,255,0.45),
-        inset -6px 0 8px rgba(193,68,115,0.12),
-        0 4px 9px rgba(197,70,119,0.18);
-}
-
-/* Remove the old heart inside the knot */
-
-.bow-center span {
-    display: none;
-}
-
-/* ===== BOW TAILS DOWN ===== */
-
-.bow-drop {
-    position: absolute;
-    top: 82px;
-
-    width: 72px;
-    height: 96px;
-
-    background:
-        linear-gradient(
-            100deg,
-            #ed8eaf 0%,
-            #f9bdd2 35%,
-            #ffe0ea 55%,
-            #ef94b5 100%
-        );
-
-    z-index: 3;
-
-    box-shadow:
-        inset 6px 0 10px rgba(255,255,255,0.28),
-        inset -6px 0 10px rgba(194,70,116,0.10);
-}
-
-/* Left hanging ribbon */
-
-.bow-drop-left {
-    left: 103px;
-
-    transform: rotate(12deg);
-
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            88% 100%,
-            51% 78%,
-            15% 100%
-        );
-}
-
-/* Right hanging ribbon */
-
-.bow-drop-right {
-    right: 103px;
-
-    transform: rotate(-12deg);
-
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            85% 100%,
-            49% 78%,
-            12% 100%
-        );
-}
-
-/* ===== SIDE HANDWRITING ===== */
-
-.side-quote {
-    position: absolute;
-    top: 25px;
-
-    color: #ed5d91;
-
-    font-family:
-        "Brush Script MT",
-        "Segoe Script",
-        cursive;
-
-    font-size: 22px;
-    font-weight: 500;
-    font-style: italic;
-    line-height: 1.08;
-
-    z-index: 20;
-
-    text-shadow:
-        0 2px 8px rgba(232,93,145,0.10);
-}
-
-.left-quote {
-    left: 10px;
-    transform: rotate(-5deg);
-}
-
-.right-quote {
-    right: 10px;
-    text-align: center;
-    transform: rotate(5deg);
-}
-
-/* ===== PINK BUTTERFLIES ===== */
-
-.butterfly {
-    position: absolute;
-    top: 46px;
-
-    font-size: 39px;
-
-    z-index: 15;
-
-    /* turns the butterfly toward pink */
-    filter:
-        grayscale(1)
-        sepia(1)
-        saturate(8)
-        hue-rotate(285deg)
-        brightness(1.12);
-
-    text-shadow:
-        0 4px 8px rgba(226,91,142,0.18);
-}
-
-.butterfly-left {
-    left: 19%;
-    transform: rotate(-17deg);
-}
-
-.butterfly-right {
-    right: 19%;
-    transform: rotate(17deg) scaleX(-1);
-}
-
-/* ===== HEARTS + SPARKLES ===== */
-
-.hero-sparkles span {
-    position: absolute;
-    color: #ef6798;
-    z-index: 14;
-}
-
-.spark-one {
-    left: 27%;
-    top: 20px;
-    font-size: 23px;
-}
-
-.spark-two {
-    right: 27%;
-    top: 21px;
-    font-size: 25px;
-}
-
-.heart-one {
-    left: 31%;
-    top: 42px;
-    font-size: 28px;
-}
-
-.heart-two {
-    right: 31%;
-    top: 36px;
-    font-size: 25px;
-    color: #f18caf !important;
-}
-
-/* ===== MOBILE ===== */
-
-@media (max-width: 650px) {
-
-    .hero-decoration {
-        height: 155px;
-    }
-
-    .ribbon-area {
-        width: 110%;
-        top: 0;
-        transform:
-            translateX(-50%)
-            scale(0.68);
-
-        transform-origin: top center;
-    }
-
-    .side-quote {
-        display: none;
-    }
-
-    .butterfly {
-        font-size: 26px;
-        top: 40px;
-    }
-
-    .butterfly-left {
-        left: 5%;
-    }
-
-    .butterfly-right {
-        right: 5%;
-    }
-}
     
     </style>
 </head>
@@ -662,53 +312,18 @@ h2::after {
 <body>
 
 <div class="container">
-    <div class="hero-decoration">
-
-    <div class="side-quote left-quote">
-        Small<br>
-        Steps<br>
-        Big<br>
-        Impact ♡
-    </div>
-
-    <div class="hero-sparkles">
-        <span class="spark-one">✦</span>
-        <span class="heart-one">♡</span>
-        <span class="heart-two">♥</span>
-        <span class="spark-two">✧</span>
-    </div>
-
-    <div class="butterfly butterfly-left">🦋</div>
-    <div class="butterfly butterfly-right">🦋</div>
-
-    <div class="ribbon-area">
-
-        <div class="ribbon-tail ribbon-tail-left"></div>
-
-        <div class="main-bow">
-            <div class="bow-loop bow-left"></div>
-            <div class="bow-loop bow-right"></div>
-
-            <div class="bow-center">
-                <span>♡</span>
-            </div>
-
-            <div class="bow-drop bow-drop-left"></div>
-            <div class="bow-drop bow-drop-right"></div>
-        </div>
-
-        <div class="ribbon-tail ribbon-tail-right"></div>
-
-    </div>
-
-    <div class="side-quote right-quote">
-        Good<br>
-        Ideas<br>
-        Brighter<br>
-        Tomorrows ♡
-    </div>
+    <div class="girly-decoration">
+    <span class="decor-heart">♡ ♥ ♡ ✦ ♥ ♡</span>
+    <span class="small-bow">🎀</span>
+    <span class="decor-line"></span>
+    <span class="small-bow">🎀</span>
+    <span class="big-bow">🎀</span>
+    <span class="small-bow">🎀</span>
+    <span class="decor-line"></span>
+    <span class="decor-heart">♡ ♥ ✦ ♡ ♥ ♡</span>
 
 </div>
+    
 
     <a class="back" href="index.html">← Back to Assignments</a>
 
