@@ -103,6 +103,45 @@
                 width: 100%;
             }
         }
+/* LIGHT CELEBRATION EFFECTS */
+
+.sparkle {
+    position: fixed;
+    top: -30px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: sparkleFall linear forwards;
+}
+
+@keyframes sparkleFall {
+    0% {
+        transform: translateY(-30px) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    85% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.figure img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.figure img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(183, 110, 121, 0.30);
+}
+        
     </style>
 </head>
 
@@ -246,6 +285,34 @@
 
 
 </div>
+
+    <script>
+    const sparkleSymbols = ["✨", "✦", "♡", "✧"];
+
+    function createSparkle() {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+
+        sparkle.innerHTML =
+            sparkleSymbols[Math.floor(Math.random() * sparkleSymbols.length)];
+
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.fontSize = (12 + Math.random() * 12) + "px";
+        sparkle.style.animationDuration = (5 + Math.random() * 4) + "s";
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(function () {
+            sparkle.remove();
+        }, 9000);
+    }
+
+    for (let i = 0; i < 18; i++) {
+        setTimeout(createSparkle, i * 100);
+    }
+
+    setInterval(createSparkle, 1200);
+</script>
 
 </body>
 </html>
