@@ -283,230 +283,359 @@ h2::after {
     text-shadow: 0 0 10px rgba(232, 93, 145, 0.18);
 }
 
-        /* ===== NEW GIRLY HERO HEADER ===== */
+       /* ===== SOFT SATIN GIRLY HEADER ===== */
 
 .hero-decoration {
     position: relative;
-    height: 155px;
-    margin: -20px 0 5px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    width: 100%;
+    height: 210px;
+    margin: -15px 0 0 0;
 }
+
+/* ===== FLOWING RIBBON ===== */
 
 .ribbon-area {
     position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 72%;
-    height: 120px;
-}
-
-/* LONG SATIN RIBBONS */
-
-.ribbon-tail {
-    position: absolute;
-    top: 48px;
-    width: 43%;
-    height: 34px;
-    background: linear-gradient(
-        180deg,
-        #ffd0df 0%,
-        #f69abc 25%,
-        #ee6f9f 55%,
-        #f7a7c3 78%,
-        #ffd5e3 100%
-    );
-    box-shadow: 0 7px 12px rgba(201, 79, 124, 0.18);
-    z-index: 1;
-}
-
-.ribbon-tail-left {
-    right: 53%;
-    border-radius: 80% 15% 70% 20%;
-    transform: rotate(-3deg) skewX(-12deg);
-}
-
-.ribbon-tail-right {
-    left: 53%;
-    border-radius: 15% 80% 20% 70%;
-    transform: rotate(3deg) skewX(12deg);
-}
-
-/* CENTER BOW */
-
-.main-bow {
-    position: absolute;
-    width: 230px;
-    height: 125px;
+    width: 78%;
+    height: 180px;
     left: 50%;
     top: 0;
     transform: translateX(-50%);
-    z-index: 5;
-    filter: drop-shadow(0 8px 10px rgba(201, 79, 124, 0.22));
 }
+
+/* Long ribbon sides */
+
+.ribbon-tail {
+    position: absolute;
+    top: 78px;
+    width: 43%;
+    height: 34px;
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffe4ed 0%,
+            #fbc2d5 18%,
+            #f28fb3 48%,
+            #f7adc7 72%,
+            #ffe0ea 100%
+        );
+
+    box-shadow:
+        0 8px 14px rgba(220, 90, 140, 0.13),
+        inset 0 5px 7px rgba(255,255,255,0.55),
+        inset 0 -5px 7px rgba(209,78,126,0.12);
+}
+
+/* Wavy left ribbon */
+
+.ribbon-tail-left {
+    right: 55%;
+    border-radius: 60% 15% 70% 30% / 70% 30% 70% 30%;
+    transform:
+        rotate(-4deg)
+        skewX(-18deg);
+}
+
+/* Wavy right ribbon */
+
+.ribbon-tail-right {
+    left: 55%;
+    border-radius: 15% 60% 30% 70% / 30% 70% 30% 70%;
+    transform:
+        rotate(4deg)
+        skewX(18deg);
+}
+
+/* ===== CENTER SATIN BOW ===== */
+
+.main-bow {
+    position: absolute;
+    width: 330px;
+    height: 175px;
+    left: 50%;
+    top: 2px;
+    transform: translateX(-50%);
+    z-index: 6;
+
+    filter:
+        drop-shadow(0 10px 12px rgba(211, 91, 137, 0.20));
+}
+
+/* Bow loops */
 
 .bow-loop {
     position: absolute;
-    top: 13px;
-    width: 105px;
-    height: 65px;
-    background: linear-gradient(
-        135deg,
-        #ffd4e2,
-        #f78fb4 42%,
-        #e95f93 70%,
-        #ffc6d9
-    );
-    border: 1px solid rgba(218, 77, 130, 0.35);
+    top: 18px;
+    width: 155px;
+    height: 90px;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 20%,
+            rgba(255,255,255,0.75),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #ffe3ed 0%,
+            #f9bdd2 25%,
+            #ef8db2 52%,
+            #f8b6ce 76%,
+            #ffe5ee 100%
+        );
+
+    border: 1px solid rgba(223, 105, 150, 0.18);
+
+    box-shadow:
+        inset 10px 7px 16px rgba(255,255,255,0.35),
+        inset -10px -8px 15px rgba(203,80,127,0.13);
 }
+
+/* Left bow loop */
 
 .bow-left {
     left: 5px;
-    border-radius: 70% 35% 45% 65%;
-    transform: rotate(8deg);
+
+    border-radius:
+        80% 35% 52% 72% /
+        60% 48% 58% 65%;
+
+    transform:
+        rotate(8deg)
+        skewX(-7deg);
 }
+
+/* Right bow loop */
 
 .bow-right {
     right: 5px;
-    border-radius: 35% 70% 65% 45%;
-    transform: rotate(-8deg);
+
+    border-radius:
+        35% 80% 72% 52% /
+        48% 60% 65% 58%;
+
+    transform:
+        rotate(-8deg)
+        skewX(7deg);
 }
+
+/* ===== CENTER KNOT ===== */
 
 .bow-center {
     position: absolute;
-    z-index: 8;
-    width: 52px;
-    height: 52px;
+    width: 54px;
+    height: 66px;
+
     left: 50%;
-    top: 25px;
-    transform: translateX(-50%) rotate(45deg);
-    background: linear-gradient(135deg, #fff4f8, #f58caf);
-    border: 4px solid #f5bdd0;
+    top: 31px;
+
+    transform: translateX(-50%);
+
+    z-index: 10;
+
+    border-radius: 42%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ed8fb1,
+            #ffd8e5 28%,
+            #f5a4c1 52%,
+            #ffe1ea 73%,
+            #e989ac
+        );
+
+    border: 1px solid rgba(215, 92, 138, 0.22);
+
     box-shadow:
-        0 0 0 3px #fff,
-        0 3px 12px rgba(201, 79, 124, 0.28);
-    border-radius: 12px;
+        inset 6px 0 8px rgba(255,255,255,0.45),
+        inset -6px 0 8px rgba(193,68,115,0.12),
+        0 4px 9px rgba(197,70,119,0.18);
 }
 
+/* Remove the old heart inside the knot */
+
 .bow-center span {
-    position: absolute;
-    transform: rotate(-45deg);
-    font-size: 29px;
-    color: #d94f83;
-    left: 9px;
-    top: 7px;
+    display: none;
 }
+
+/* ===== BOW TAILS DOWN ===== */
 
 .bow-drop {
     position: absolute;
-    top: 65px;
-    width: 48px;
-    height: 68px;
-    background: linear-gradient(
-        90deg,
-        #e95f93,
-        #f59cbb,
-        #ffd0df
-    );
-    z-index: -1;
+    top: 82px;
+
+    width: 72px;
+    height: 96px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #ed8eaf 0%,
+            #f9bdd2 35%,
+            #ffe0ea 55%,
+            #ef94b5 100%
+        );
+
+    z-index: 3;
+
+    box-shadow:
+        inset 6px 0 10px rgba(255,255,255,0.28),
+        inset -6px 0 10px rgba(194,70,116,0.10);
 }
+
+/* Left hanging ribbon */
 
 .bow-drop-left {
-    left: 72px;
-    transform: rotate(13deg);
-    clip-path: polygon(0 0, 100% 0, 83% 100%, 50% 79%, 17% 100%);
+    left: 103px;
+
+    transform: rotate(12deg);
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            88% 100%,
+            51% 78%,
+            15% 100%
+        );
 }
+
+/* Right hanging ribbon */
 
 .bow-drop-right {
-    right: 72px;
-    transform: rotate(-13deg);
-    clip-path: polygon(0 0, 100% 0, 83% 100%, 50% 79%, 17% 100%);
+    right: 103px;
+
+    transform: rotate(-12deg);
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            85% 100%,
+            49% 78%,
+            12% 100%
+        );
 }
 
-/* SIDE WRITING */
+/* ===== SIDE HANDWRITING ===== */
 
 .side-quote {
     position: absolute;
-    top: 8px;
-    color: #e75c91;
-    font-family: "Brush Script MT", "Segoe Script", cursive;
-    font-size: 20px;
-    line-height: 1.05;
+    top: 25px;
+
+    color: #ed5d91;
+
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size: 22px;
+    font-weight: 500;
     font-style: italic;
-    z-index: 10;
+    line-height: 1.08;
+
+    z-index: 20;
+
+    text-shadow:
+        0 2px 8px rgba(232,93,145,0.10);
 }
 
 .left-quote {
     left: 10px;
-    transform: rotate(-7deg);
+    transform: rotate(-5deg);
 }
 
 .right-quote {
     right: 10px;
     text-align: center;
-    transform: rotate(6deg);
+    transform: rotate(5deg);
 }
 
-/* BUTTERFLIES */
+/* ===== PINK BUTTERFLIES ===== */
 
 .butterfly {
     position: absolute;
-    top: 34px;
-    font-size: 35px;
-    z-index: 10;
-    filter: hue-rotate(295deg) saturate(1.4);
+    top: 46px;
+
+    font-size: 39px;
+
+    z-index: 15;
+
+    /* turns the butterfly toward pink */
+    filter:
+        grayscale(1)
+        sepia(1)
+        saturate(8)
+        hue-rotate(285deg)
+        brightness(1.12);
+
+    text-shadow:
+        0 4px 8px rgba(226,91,142,0.18);
 }
 
 .butterfly-left {
-    left: 20%;
-    transform: rotate(-15deg);
+    left: 19%;
+    transform: rotate(-17deg);
 }
 
 .butterfly-right {
-    right: 20%;
-    transform: rotate(15deg);
+    right: 19%;
+    transform: rotate(17deg) scaleX(-1);
 }
 
-/* HEARTS + SPARKLES */
+/* ===== HEARTS + SPARKLES ===== */
 
 .hero-sparkles span {
     position: absolute;
-    color: #ee6799;
-    z-index: 9;
+    color: #ef6798;
+    z-index: 14;
 }
 
 .spark-one {
-    left: 29%;
-    top: 7px;
-    font-size: 20px;
+    left: 27%;
+    top: 20px;
+    font-size: 23px;
 }
 
 .spark-two {
-    right: 29%;
-    top: 12px;
-    font-size: 24px;
+    right: 27%;
+    top: 21px;
+    font-size: 25px;
 }
 
 .heart-one {
-    left: 33%;
-    top: 22px;
+    left: 31%;
+    top: 42px;
     font-size: 28px;
 }
 
 .heart-two {
-    right: 33%;
-    top: 20px;
-    font-size: 24px;
-    color: #f58caf !important;
+    right: 31%;
+    top: 36px;
+    font-size: 25px;
+    color: #f18caf !important;
 }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
 
 @media (max-width: 650px) {
+
     .hero-decoration {
-        height: 125px;
+        height: 155px;
+    }
+
+    .ribbon-area {
+        width: 110%;
+        top: 0;
+        transform:
+            translateX(-50%)
+            scale(0.68);
+
+        transform-origin: top center;
     }
 
     .side-quote {
@@ -514,13 +643,16 @@ h2::after {
     }
 
     .butterfly {
-        font-size: 24px;
+        font-size: 26px;
+        top: 40px;
     }
 
-    .ribbon-area {
-        width: 95%;
-        transform: translateX(-50%) scale(0.78);
-        transform-origin: top center;
+    .butterfly-left {
+        left: 5%;
+    }
+
+    .butterfly-right {
+        right: 5%;
     }
 }
     
