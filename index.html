@@ -131,12 +131,42 @@ overflow: hidden;
         transform: translate(10px, -10px) rotate(5deg);
     }
 }
+
+        /* BIG STATIONARY HEARTS */
+
+.big-background-heart {
+    position: absolute;
+    font-size: 220px;
+    color: #f4a9c4;
+    opacity: 0.16;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.big-heart-left {
+    left: 4%;
+    top: 32%;
+    transform: rotate(-12deg);
+}
+
+.big-heart-right {
+    right: 4%;
+    top: 48%;
+    transform: rotate(12deg);
+}
+
+.container > *:not(.big-background-heart) {
+    position: relative;
+    z-index: 1;
+}
     </style>
 </head>
 
 <body>
 
     <div class="container">
+        <div class="big-background-heart big-heart-left">♡</div>
+<div class="big-background-heart big-heart-right">♡</div>
         <span class="floating-decor" style="left: 5%; top: 12%;">♡</span>
 <span class="floating-decor" style="left: 12%; top: 55%;">✦</span>
 <span class="floating-decor" style="left: 20%; top: 78%;">♥</span>
