@@ -282,6 +282,247 @@ h2::after {
     transform: rotate(10deg);
     text-shadow: 0 0 10px rgba(232, 93, 145, 0.18);
 }
+
+        /* ===== NEW GIRLY HERO HEADER ===== */
+
+.hero-decoration {
+    position: relative;
+    height: 155px;
+    margin: -20px 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.ribbon-area {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 72%;
+    height: 120px;
+}
+
+/* LONG SATIN RIBBONS */
+
+.ribbon-tail {
+    position: absolute;
+    top: 48px;
+    width: 43%;
+    height: 34px;
+    background: linear-gradient(
+        180deg,
+        #ffd0df 0%,
+        #f69abc 25%,
+        #ee6f9f 55%,
+        #f7a7c3 78%,
+        #ffd5e3 100%
+    );
+    box-shadow: 0 7px 12px rgba(201, 79, 124, 0.18);
+    z-index: 1;
+}
+
+.ribbon-tail-left {
+    right: 53%;
+    border-radius: 80% 15% 70% 20%;
+    transform: rotate(-3deg) skewX(-12deg);
+}
+
+.ribbon-tail-right {
+    left: 53%;
+    border-radius: 15% 80% 20% 70%;
+    transform: rotate(3deg) skewX(12deg);
+}
+
+/* CENTER BOW */
+
+.main-bow {
+    position: absolute;
+    width: 230px;
+    height: 125px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 5;
+    filter: drop-shadow(0 8px 10px rgba(201, 79, 124, 0.22));
+}
+
+.bow-loop {
+    position: absolute;
+    top: 13px;
+    width: 105px;
+    height: 65px;
+    background: linear-gradient(
+        135deg,
+        #ffd4e2,
+        #f78fb4 42%,
+        #e95f93 70%,
+        #ffc6d9
+    );
+    border: 1px solid rgba(218, 77, 130, 0.35);
+}
+
+.bow-left {
+    left: 5px;
+    border-radius: 70% 35% 45% 65%;
+    transform: rotate(8deg);
+}
+
+.bow-right {
+    right: 5px;
+    border-radius: 35% 70% 65% 45%;
+    transform: rotate(-8deg);
+}
+
+.bow-center {
+    position: absolute;
+    z-index: 8;
+    width: 52px;
+    height: 52px;
+    left: 50%;
+    top: 25px;
+    transform: translateX(-50%) rotate(45deg);
+    background: linear-gradient(135deg, #fff4f8, #f58caf);
+    border: 4px solid #f5bdd0;
+    box-shadow:
+        0 0 0 3px #fff,
+        0 3px 12px rgba(201, 79, 124, 0.28);
+    border-radius: 12px;
+}
+
+.bow-center span {
+    position: absolute;
+    transform: rotate(-45deg);
+    font-size: 29px;
+    color: #d94f83;
+    left: 9px;
+    top: 7px;
+}
+
+.bow-drop {
+    position: absolute;
+    top: 65px;
+    width: 48px;
+    height: 68px;
+    background: linear-gradient(
+        90deg,
+        #e95f93,
+        #f59cbb,
+        #ffd0df
+    );
+    z-index: -1;
+}
+
+.bow-drop-left {
+    left: 72px;
+    transform: rotate(13deg);
+    clip-path: polygon(0 0, 100% 0, 83% 100%, 50% 79%, 17% 100%);
+}
+
+.bow-drop-right {
+    right: 72px;
+    transform: rotate(-13deg);
+    clip-path: polygon(0 0, 100% 0, 83% 100%, 50% 79%, 17% 100%);
+}
+
+/* SIDE WRITING */
+
+.side-quote {
+    position: absolute;
+    top: 8px;
+    color: #e75c91;
+    font-family: "Brush Script MT", "Segoe Script", cursive;
+    font-size: 20px;
+    line-height: 1.05;
+    font-style: italic;
+    z-index: 10;
+}
+
+.left-quote {
+    left: 10px;
+    transform: rotate(-7deg);
+}
+
+.right-quote {
+    right: 10px;
+    text-align: center;
+    transform: rotate(6deg);
+}
+
+/* BUTTERFLIES */
+
+.butterfly {
+    position: absolute;
+    top: 34px;
+    font-size: 35px;
+    z-index: 10;
+    filter: hue-rotate(295deg) saturate(1.4);
+}
+
+.butterfly-left {
+    left: 20%;
+    transform: rotate(-15deg);
+}
+
+.butterfly-right {
+    right: 20%;
+    transform: rotate(15deg);
+}
+
+/* HEARTS + SPARKLES */
+
+.hero-sparkles span {
+    position: absolute;
+    color: #ee6799;
+    z-index: 9;
+}
+
+.spark-one {
+    left: 29%;
+    top: 7px;
+    font-size: 20px;
+}
+
+.spark-two {
+    right: 29%;
+    top: 12px;
+    font-size: 24px;
+}
+
+.heart-one {
+    left: 33%;
+    top: 22px;
+    font-size: 28px;
+}
+
+.heart-two {
+    right: 33%;
+    top: 20px;
+    font-size: 24px;
+    color: #f58caf !important;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    .hero-decoration {
+        height: 125px;
+    }
+
+    .side-quote {
+        display: none;
+    }
+
+    .butterfly {
+        font-size: 24px;
+    }
+
+    .ribbon-area {
+        width: 95%;
+        transform: translateX(-50%) scale(0.78);
+        transform-origin: top center;
+    }
+}
     
     </style>
 </head>
@@ -289,12 +530,52 @@ h2::after {
 <body>
 
 <div class="container">
-    <div class="girly-decoration">
-    <span class="decor-heart">♡ ✦</span>
-    <span class="decor-line"></span>
-    <span class="big-bow">🎀</span>
-    <span class="decor-line"></span>
-    <span class="decor-heart">✦ ♡</span>
+    <div class="hero-decoration">
+
+    <div class="side-quote left-quote">
+        Small<br>
+        Steps<br>
+        Big<br>
+        Impact ♡
+    </div>
+
+    <div class="hero-sparkles">
+        <span class="spark-one">✦</span>
+        <span class="heart-one">♡</span>
+        <span class="heart-two">♥</span>
+        <span class="spark-two">✧</span>
+    </div>
+
+    <div class="butterfly butterfly-left">🦋</div>
+    <div class="butterfly butterfly-right">🦋</div>
+
+    <div class="ribbon-area">
+
+        <div class="ribbon-tail ribbon-tail-left"></div>
+
+        <div class="main-bow">
+            <div class="bow-loop bow-left"></div>
+            <div class="bow-loop bow-right"></div>
+
+            <div class="bow-center">
+                <span>♡</span>
+            </div>
+
+            <div class="bow-drop bow-drop-left"></div>
+            <div class="bow-drop bow-drop-right"></div>
+        </div>
+
+        <div class="ribbon-tail ribbon-tail-right"></div>
+
+    </div>
+
+    <div class="side-quote right-quote">
+        Good<br>
+        Ideas<br>
+        Brighter<br>
+        Tomorrows ♡
+    </div>
+
 </div>
 
     <a class="back" href="index.html">← Back to Assignments</a>
