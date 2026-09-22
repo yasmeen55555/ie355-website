@@ -38,6 +38,8 @@
     box-shadow:
         0 10px 30px rgba(232, 93, 145, 0.18),
         0 0 35px rgba(255, 182, 208, 0.25);
+           position: relative;
+overflow: hidden;
 }
 /* GIRLY TOP DECORATION */
 
@@ -100,12 +102,51 @@
         a:hover {
             background-color: #efbdca;
         }
+
+        /* FLOATING HEARTS AND SPARKLES */
+
+.floating-decor {
+    position: absolute;
+    font-size: 24px;
+    color: #ee7faa;
+    pointer-events: none;
+    opacity: 0.65;
+    animation: floatAround 5s ease-in-out infinite;
+}
+
+@keyframes floatAround {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(12px, -12px) rotate(8deg);
+    }
+
+    50% {
+        transform: translate(-8px, -25px) rotate(-6deg);
+    }
+
+    75% {
+        transform: translate(10px, -10px) rotate(5deg);
+    }
+}
     </style>
 </head>
 
 <body>
 
     <div class="container">
+        <span class="floating-decor" style="left: 5%; top: 12%;">♡</span>
+<span class="floating-decor" style="left: 12%; top: 55%;">✦</span>
+<span class="floating-decor" style="left: 20%; top: 78%;">♥</span>
+<span class="floating-decor" style="left: 31%; top: 35%;">♡</span>
+<span class="floating-decor" style="left: 42%; top: 72%;">✧</span>
+<span class="floating-decor" style="left: 57%; top: 20%;">♥</span>
+<span class="floating-decor" style="left: 68%; top: 65%;">♡</span>
+<span class="floating-decor" style="left: 78%; top: 38%;">✦</span>
+<span class="floating-decor" style="left: 88%; top: 75%;">♡</span>
+<span class="floating-decor" style="left: 94%; top: 18%;">✧</span>
 <div class="top-decoration">
     <span class="heart">♡</span>
     <span class="small-bow">🎀</span>
