@@ -90,6 +90,7 @@ overflow: hidden;
 }
         a {
             display: block;
+            position: relative;
             background-color: #f7d6df;
             color: #6d4c55;
             text-decoration: none;
@@ -97,11 +98,34 @@ overflow: hidden;
             margin: 15px auto;
             width: 200px;
             border-radius: 10px;
+            border: 2px solid #f3a0bd;
+outline: 2px solid #ffe4ee;
+outline-offset: 3px;
         }
 
         a:hover {
             background-color: #efbdca;
         }
+
+        a::before {
+    content: "♡ ✦";
+    position: absolute;
+    left: -32px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e85d91;
+    font-size: 17px;
+}
+
+a::after {
+    content: "✦ ♡";
+    position: absolute;
+    right: -32px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e85d91;
+    font-size: 17px;
+}
 
         /* FLOATING HEARTS AND SPARKLES */
 
