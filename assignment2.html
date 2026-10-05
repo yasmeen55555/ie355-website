@@ -2,10 +2,59 @@
 <html>
 <head>
     <title>Assignment 2</title>
+    <style>
+body {
+    background: linear-gradient(135deg, #fff7fa 0%, #ffeef5 50%, #fff8fb 100%);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 40px;
+    color: #5f4a52;
+}
+
+.page-container {
+    background: linear-gradient(145deg, #fff0f5, #ffdce8, #fff0f5);
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px;
+    border-radius: 25px;
+    border: 3px solid #f3a0bd;
+    outline: 7px solid #ffe0eb;
+    outline-offset: 5px;
+    box-shadow:
+        0 10px 30px rgba(232, 93, 145, 0.18),
+        0 0 35px rgba(255, 182, 208, 0.25);
+}
+
+h1 {
+    color: #b76e79;
+    text-align: center;
+}
+
+h2 {
+    color: #b76e79;
+    text-align: center;
+}
+
+h3 {
+    color: #9d5d6c;
+    margin-top: 30px;
+}
+
+p {
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(232, 93, 145, 0.18);
+}
+</style>
 </head>
-
 <body>
-
+<div class="page-container">
     <h1>Assignment 2 - CORA Analysis</h1>
 
     <h2>BetterUse Engineering - Handheld Hair Dryer</h2>
@@ -21,6 +70,77 @@ BetterUse Engineering handheld hair dryer.
 <p>
 Figure 1. CORA analysis for the BetterUse Engineering handheld hair dryer.
 </p>
+<h3>Customer Rating Comparison</h3>
 
+<img src="cora2.png" alt="Customer Rating Comparison" style="width:45%; max-width:500px;">
+
+<p>
+Figure 2. Customer rating comparison between the BetterUse hair dryer and benchmark products.
+</p>
+<h3>Engineering Solution Ratings</h3>
+
+<img src="cora3.png" alt="Engineering Solution Ratings" style="width:70%; max-width:850px;">
+
+<p>
+Figure 3. Engineering solution ratings for the BetterUse hair dryer and benchmark products.
+<h3>Importance Results</h3>
+
+<img src="cora5.png" alt="Absolute and Relative Importance Results" style="width:90%; max-width:1100px;">
+
+<p>
+Figure 4. Absolute and relative importance results and engineering benchmark ratings.
+</p>
+    <h3>CORA Explanation</h3>
+
+<p>
+For Assignment 2, I used CORA, or Component Oriented Requirements Analysis,
+to evaluate the ergonomic design of the BetterUse Engineering handheld hair dryer.
+The purpose of the CORA is to connect customer and human-factor requirements
+with specific engineering solutions.
+</p>
+
+<p>
+The customer requirements include lightweight design, comfortable grip,
+low wrist and arm strain, easy-to-reach controls, low noise, safe temperature,
+reduced fatigue, good balance, overheating protection, simple operation,
+durability, and effective drying. Each requirement was given an importance
+rating from 1 to 5, where 5 represents a very important customer need.
+</p>
+
+<p>
+The engineering solutions include lightweight housing, ergonomic handle,
+balanced component layout, accessible controls, efficient motor and airflow,
+heat insulation, thermal safety cutoff, cool-touch materials, swivel cord,
+vibration reduction, durable housing, and other design features. The relationship
+between each customer requirement and engineering solution was evaluated using
+CORA values. A value of 9 represents a strong relationship, 3 represents a medium
+relationship, 1 represents a weak relationship, and a blank cell means there is
+no significant relationship.
+</p>
+
+<p>
+The CORA also compares our proposed hair dryer with three benchmark products
+using customer ratings from 1 to 5. These ratings help show where the BetterUse
+design performs well and where improvement is still needed. The Absolute Importance
+Rating and Relative Importance Rating identify which engineering solutions have
+the greatest effect on the most important customer requirements.
+</p>
+
+<p>
+The results show that features such as the ergonomic handle, balanced component
+layout, efficient motor and airflow, heat protection, and safety controls are
+important design priorities. These features strongly support the main ergonomic
+goals of reducing wrist and arm strain, lowering user fatigue, improving comfort,
+maintaining safe temperatures, and providing effective drying performance.
+</p>
+
+<p>
+Overall, the CORA analysis shows that the proposed design improvements are aligned
+with the most important customer and ergonomic requirements. This does not guarantee
+market success, but it provides a defendable engineering basis for improving the
+hair dryer and shows which design features should receive the most attention.
+</p>
+    
+</div>
 </body>
 </html>
