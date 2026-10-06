@@ -51,10 +51,184 @@ img {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(232, 93, 145, 0.18);
 }
-</style>
+/* GIRLY TOP DECORATION */
+
+.top-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 25px;
+    font-size: 32px;
+}
+
+.top-decoration .main-bow {
+    font-size: 65px;
+    display: inline-block;
+    animation: bowFloat 2.5s ease-in-out infinite;
+}
+
+.top-decoration .small-bow {
+    font-size: 38px;
+    display: inline-block;
+    animation: bowFloat 3s ease-in-out infinite;
+}
+
+.top-decoration .heart {
+    color: #e85d91;
+    font-size: 30px;
+    display: inline-block;
+    animation: heartBeat 1.7s ease-in-out infinite;
+}
+
+@keyframes bowFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+
+/* FLOATING HEARTS AND SPARKLES */
+
+.floating-decor {
+    position: absolute;
+    font-size: 24px;
+    color: #ee7faa;
+    pointer-events: none;
+    opacity: 0.65;
+    animation: floatAround 5s ease-in-out infinite;
+}
+
+@keyframes floatAround {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(12px, -12px) rotate(8deg);
+    }
+
+    50% {
+        transform: translate(-8px, -25px) rotate(-6deg);
+    }
+
+    75% {
+        transform: translate(10px, -10px) rotate(5deg);
+    }
+}
+
+
+/* BIG BACKGROUND HEARTS */
+
+.big-background-heart {
+    position: absolute;
+    font-size: 220px;
+    color: #f4a9c4;
+    opacity: 0.16;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.big-heart-left {
+    left: 4%;
+    top: 15%;
+    transform: rotate(-12deg);
+}
+
+.big-heart-right {
+    right: 4%;
+    top: 45%;
+    transform: rotate(12deg);
+}
+
+.page-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.page-container > *:not(.big-background-heart) {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* FALLING HEARTS */
+
+.celebration {
+    position: absolute;
+    top: -50px;
+    font-size: 22px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.7;
+    animation: celebrationFall 8s linear infinite;
+}
+
+@keyframes celebrationFall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(3000px) rotate(360deg);
+        opacity: 0;
+    }
+}</style>
 </head>
 <body>
 <div class="page-container">
+    <span class="celebration" style="left: 8%; animation-delay: 0s;">♡</span>
+<span class="celebration" style="left: 18%; animation-delay: 2s;">✦</span>
+<span class="celebration" style="left: 29%; animation-delay: 4s;">♥</span>
+<span class="celebration" style="left: 40%; animation-delay: 1s;">✧</span>
+<span class="celebration" style="left: 52%; animation-delay: 3s;">♡</span>
+<span class="celebration" style="left: 63%; animation-delay: 5s;">✦</span>
+<span class="celebration" style="left: 74%; animation-delay: 2.5s;">♥</span>
+<span class="celebration" style="left: 85%; animation-delay: 4.5s;">♡</span>
+<span class="celebration" style="left: 94%; animation-delay: 1.5s;">✧</span>
+
+<div class="big-background-heart big-heart-left">♡</div>
+<div class="big-background-heart big-heart-right">♡</div>
+
+<span class="floating-decor" style="left: 5%; top: 12%;">♡</span>
+<span class="floating-decor" style="left: 12%; top: 55%;">✦</span>
+<span class="floating-decor" style="left: 20%; top: 78%;">♥</span>
+<span class="floating-decor" style="left: 31%; top: 35%;">♡</span>
+<span class="floating-decor" style="left: 42%; top: 72%;">✧</span>
+<span class="floating-decor" style="left: 57%; top: 20%;">♥</span>
+<span class="floating-decor" style="left: 68%; top: 65%;">♡</span>
+<span class="floating-decor" style="left: 78%; top: 38%;">✦</span>
+<span class="floating-decor" style="left: 88%; top: 75%;">♡</span>
+<span class="floating-decor" style="left: 94%; top: 18%;">✧</span>
+
+<div class="top-decoration">
+    <span class="heart">♡</span>
+    <span class="small-bow">🎀</span>
+    <span class="heart">♥</span>
+    <span class="main-bow">🎀</span>
+    <span class="heart">♡</span>
+    <span class="small-bow">🎀</span>
+    <span class="heart">♥</span>
+</div>
     <h1>Assignment 2 - CORA Analysis</h1>
 
     <h2>BetterUse Engineering - Handheld Hair Dryer</h2>
