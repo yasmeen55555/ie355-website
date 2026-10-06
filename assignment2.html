@@ -11,7 +11,30 @@ body {
     color: #5f4a52;
 }
 
-.page-container {
+.back-button {
+    display: block;
+    width: 220px;
+    margin: 40px auto 10px auto;
+    padding: 14px 18px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(180deg, #f6a8c4, #ee86ad);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    border: 2px solid #f7b6cf;
+    box-shadow:
+        0 6px 15px rgba(232, 93, 145, 0.35),
+        0 0 15px rgba(255, 182, 208, 0.35);
+    transition: 0.2s ease;
+}
+
+.back-button:hover {
+    background: linear-gradient(180deg, #f49abb, #e976a2);
+    transform: translateY(-2px);
+}
+        .page-container {
     background: linear-gradient(145deg, #fff0f5, #ffdce8, #fff0f5);
     max-width: 1200px;
     margin: auto;
@@ -314,7 +337,7 @@ with the most important customer and ergonomic requirements. This does not guara
 market success, but it provides a defendable engineering basis for improving the
 hair dryer and shows which design features should receive the most attention.
 </p>
-    
+<a href="index.html" class="back-button">← Back to Assignments</a>
 </div>
 </body>
 </html>
