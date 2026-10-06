@@ -12,22 +12,26 @@ body {
 }
 
 .back-button {
-    display: block;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+
     width: 220px;
-    margin: 40px auto 10px auto;
     padding: 14px 18px;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
+
     background: linear-gradient(180deg, #f6a8c4, #ee86ad);
     color: white;
     text-decoration: none;
     border-radius: 12px;
     border: 2px solid #f7b6cf;
+
     box-shadow:
         0 6px 15px rgba(232, 93, 145, 0.35),
         0 0 15px rgba(255, 182, 208, 0.35);
-    transition: 0.2s ease;
 }
 
 .back-button:hover {
@@ -219,6 +223,7 @@ img {
 </head>
 <body>
 <div class="page-container">
+    <a href="index.html" class="back-button">← Back to Assignments</a>
     <span class="celebration" style="left: 8%; animation-delay: 0s;">♡</span>
 <span class="celebration" style="left: 18%; animation-delay: 2s;">✦</span>
 <span class="celebration" style="left: 29%; animation-delay: 4s;">♥</span>
@@ -338,7 +343,6 @@ market success, but it provides a defendable engineering basis for improving the
 hair dryer and shows which design features should receive the most attention.
 </p>
     
-<a href="index.html" class="back-button">← Back to Assignments</a>
 </div>
 </body>
 </html>
