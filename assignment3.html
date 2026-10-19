@@ -1,1 +1,1019 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IE 355 - Assignment 3</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #fff7fa 0%, #ffeef5 50%, #fff8fb 100%);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 40px;
+    color: #5f4a52;
+}
+
+.back-button {
+    position: relative;
+    display: inline-block;
+    z-index: 9999;
+    width: 220px;
+    padding: 14px 18px;
+    margin-bottom: 35px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(180deg, #f6a8c4, #ee86ad);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    border: 2px solid #f7b6cf;
+    box-shadow: 0 6px 15px rgba(232, 93, 145, 0.35),
+                0 0 15px rgba(255, 182, 208, 0.35);
+}
+
+.back-button:hover {
+    background: linear-gradient(180deg, #f49abb, #e976a2);
+    transform: translateY(-2px);
+}
+
+.page-container {
+    background: linear-gradient(145deg, #fff0f5, #ffdce8, #fff0f5);
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px;
+    border-radius: 25px;
+    border: 3px solid #f3a0bd;
+    outline: 7px solid #ffe0eb;
+    outline-offset: 5px;
+    box-shadow: 0 10px 30px rgba(232, 93, 145, 0.18),
+                0 0 35px rgba(255, 182, 208, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-container > *:not(.big-background-heart):not(.floating-decor):not(.celebration) {
+    position: relative;
+    z-index: 3;
+}
+
+h1 {
+    color: #b76e79;
+    text-align: center;
+    font-size: 32px;
+}
+
+h2 {
+    color: #b76e79;
+    text-align: center;
+}
+
+h3 {
+    color: #9d5d6c;
+    margin-top: 30px;
+    border-bottom: 2px solid #f3a0bd;
+    padding-bottom: 10px;
+}
+
+h4 {
+    color: #a45d76;
+    margin-top: 25px;
+    font-size: 18px;
+}
+
+p, li {
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+ul, ol {
+    padding-left: 30px;
+}
+
+li {
+    margin-bottom: 7px;
+}
+
+.section {
+    background: rgba(255,255,255,0.65);
+    padding: 25px;
+    margin: 30px 0;
+    border-radius: 18px;
+    border: 2px solid #f7c6d8;
+    box-shadow: 0 4px 15px rgba(232,93,145,0.10);
+}
+
+.equation {
+    background: #fff7fa;
+    padding: 18px;
+    margin: 15px 0;
+    border-left: 5px solid #ee86ad;
+    border-radius: 10px;
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.result {
+    background: #ffe4ee;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #f3a0bd;
+    margin: 15px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #fff9fc;
+}
+
+th, td {
+    border: 1px solid #f3a0bd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #f6b7ce;
+    color: #633d4c;
+}
+
+tr:nth-child(even) {
+    background: #fff0f5;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+pre {
+    background: #fff7fa;
+    border: 2px solid #f3a0bd;
+    border-radius: 12px;
+    padding: 20px;
+    overflow-x: auto;
+    line-height: 1.6;
+    font-size: 14px;
+    color: #633d4c;
+}
+
+.diagram-placeholder {
+    background: #fff9fc;
+    border: 3px dashed #ee86ad;
+    border-radius: 15px;
+    padding: 45px 20px;
+    text-align: center;
+    color: #a45d76;
+    margin: 25px 0;
+}
+
+.note {
+    font-size: 14px;
+    font-style: italic;
+    color: #866571;
+}
+
+/* GIRLY TOP DECORATION */
+
+.top-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 25px;
+    font-size: 32px;
+}
+
+.top-decoration .main-bow {
+    font-size: 65px;
+    display: inline-block;
+    animation: bowFloat 2.5s ease-in-out infinite;
+}
+
+.top-decoration .small-bow {
+    font-size: 38px;
+    display: inline-block;
+    animation: bowFloat 3s ease-in-out infinite;
+}
+
+.top-decoration .heart {
+    color: #e85d91;
+    font-size: 30px;
+    display: inline-block;
+    animation: heartBeat 1.7s ease-in-out infinite;
+}
+
+@keyframes bowFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+}
+
+/* FLOATING HEARTS AND SPARKLES */
+
+.floating-decor {
+    position: absolute;
+    font-size: 24px;
+    color: #ee7faa;
+    pointer-events: none;
+    opacity: 0.65;
+    animation: floatAround 5s ease-in-out infinite;
+}
+
+@keyframes floatAround {
+    0%, 100% {
+        transform: translate(0,0) rotate(0deg);
+    }
+    25% {
+        transform: translate(12px,-12px) rotate(8deg);
+    }
+    50% {
+        transform: translate(-8px,-25px) rotate(-6deg);
+    }
+    75% {
+        transform: translate(10px,-10px) rotate(5deg);
+    }
+}
+
+/* BIG BACKGROUND HEARTS */
+
+.big-background-heart {
+    position: absolute;
+    font-size: 220px;
+    color: #f4a9c4;
+    opacity: 0.16;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.big-heart-left {
+    left: 4%;
+    top: 15%;
+    transform: rotate(-12deg);
+}
+
+.big-heart-right {
+    right: 4%;
+    top: 45%;
+    transform: rotate(12deg);
+}
+
+/* FALLING HEARTS */
+
+.celebration {
+    position: absolute;
+    top: -50px;
+    font-size: 22px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.7;
+    animation: celebrationFall 8s linear infinite;
+}
+
+@keyframes celebrationFall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: 0.7; }
+    100% {
+        transform: translateY(100%) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 700px) {
+    body { padding: 20px; }
+    .page-container { padding: 20px; }
+    .section { padding: 15px; }
+    .top-decoration { gap: 7px; }
+    .top-decoration .main-bow { font-size: 42px; }
+    .top-decoration .small-bow { font-size: 25px; }
+    h1 { font-size: 25px; }
+}
+</style>
+</head>
+
+<body>
+<div class="page-container">
+
+<a href="index.html" class="back-button">← Back to Assignments</a>
+
+<span class="celebration" style="left:8%; animation-delay:0s;">♡</span>
+<span class="celebration" style="left:18%; animation-delay:2s;">✦</span>
+<span class="celebration" style="left:29%; animation-delay:4s;">♥</span>
+<span class="celebration" style="left:40%; animation-delay:1s;">✧</span>
+<span class="celebration" style="left:52%; animation-delay:3s;">♡</span>
+<span class="celebration" style="left:63%; animation-delay:5s;">✦</span>
+<span class="celebration" style="left:74%; animation-delay:2.5s;">♥</span>
+<span class="celebration" style="left:85%; animation-delay:4.5s;">♡</span>
+<span class="celebration" style="left:94%; animation-delay:1.5s;">✧</span>
+
+<div class="big-background-heart big-heart-left">♡</div>
+<div class="big-background-heart big-heart-right">♡</div>
+
+<span class="floating-decor" style="left:5%; top:12%;">♡</span>
+<span class="floating-decor" style="left:12%; top:55%;">✦</span>
+<span class="floating-decor" style="left:20%; top:78%;">♥</span>
+<span class="floating-decor" style="left:31%; top:35%;">♡</span>
+<span class="floating-decor" style="left:42%; top:72%;">✧</span>
+<span class="floating-decor" style="left:57%; top:20%;">♥</span>
+<span class="floating-decor" style="left:68%; top:65%;">♡</span>
+<span class="floating-decor" style="left:78%; top:38%;">✦</span>
+<span class="floating-decor" style="left:88%; top:75%;">♡</span>
+<span class="floating-decor" style="left:94%; top:18%;">✧</span>
+
+<div class="top-decoration">
+    <span class="heart">♡</span>
+    <span class="small-bow">🎀</span>
+    <span class="heart">♥</span>
+    <span class="main-bow">🎀</span>
+    <span class="heart">♡</span>
+    <span class="small-bow">🎀</span>
+    <span class="heart">♥</span>
+</div>
+
+<h1>IE 355 – Assignment 3</h1>
+<h2>Object-Oriented, Layered CIMpgr Systems Engineering Process Model</h2>
+<h2>BetterUse Engineering – Handheld Hair Dryer</h2>
+
+<!-- STEP 1 -->
+
+<div class="section">
+<h3>Step 1: Introduction and HFE Process</h3>
+
+<p>
+For this assignment, my selected product is a handheld hair dryer from BetterUse Engineering.
+The purpose of this project is to study how people use a hair dryer and how its design
+can affect their comfort, safety, and physical performance.
+</p>
+
+<p>
+Using a hair dryer requires a person to hold the device, move their arm, adjust their wrist,
+and sometimes keep their arm raised for several minutes. These movements can cause muscle
+fatigue and discomfort, especially when the hair dryer is heavy or the handle is difficult to grip.
+</p>
+
+<p>
+The main Human Factors Engineering (HFE) goal is to improve the interaction between the user
+and the hair dryer. This includes studying the weight of the device, handle design, wrist position,
+arm movement, vibration, and noise.
+</p>
+
+<p>
+In this assignment, I will develop an object-oriented, layered CIMpgr systems engineering
+process model. The model will divide the hair-drying process into connected layers to show
+how the user, equipment, tasks, and working environment interact.
+</p>
+
+<p>
+The model will also help identify ergonomic risks and support engineering improvements
+that can make the hair dryer more comfortable, efficient, and safe to use.
+</p>
+
+<h4>Main HFE Objectives</h4>
+<ul>
+<li>Reduce hand, wrist, and arm fatigue.</li>
+<li>Improve handle comfort and grip.</li>
+<li>Reduce uncomfortable wrist positions.</li>
+<li>Improve user safety and ease of use.</li>
+<li>Develop a repeatable process for evaluating ergonomic risks.</li>
+</ul>
+</div>
+
+<!-- STEP 2 -->
+
+<div class="section">
+<h3>Step 2: Object-Oriented, Layered CIMpgr Systems Engineering Process Model</h3>
+
+<h4>2.1 Object-Oriented Model</h4>
+
+<p>
+In this project, the object-oriented approach is used to divide the hair-drying
+system into smaller components called objects. Each object has its own
+characteristics and functions. These objects interact with each other during
+the hair-drying process.
+</p>
+
+<p>The five main objects in our model are:</p>
+
+<h4>Object 1: User</h4>
+<ul>
+<li>Characteristics: Hand size, arm length, strength, and height.</li>
+<li>Function: Holds and controls the hair dryer.</li>
+<li>HFE concern: Muscle fatigue and physical discomfort.</li>
+</ul>
+
+<h4>Object 2: Hair Dryer</h4>
+<ul>
+<li>Characteristics: Weight, handle size, shape, vibration, and noise level.</li>
+<li>Function: Produces and directs warm air to dry hair.</li>
+<li>HFE concern: Heavy weight and uncomfortable handle design.</li>
+</ul>
+
+<h4>Object 3: Hand, Wrist, and Arm</h4>
+<ul>
+<li>Characteristics: Grip force, wrist angle, and arm position.</li>
+<li>Function: Supports and moves the hair dryer.</li>
+<li>HFE concern: Wrist strain, arm fatigue, and repetitive movements.</li>
+</ul>
+
+<h4>Object 4: Working Environment</h4>
+<ul>
+<li>Characteristics: Room temperature, lighting, available space, and mirror position.</li>
+<li>Function: Provides the conditions in which the hair dryer is used.</li>
+<li>HFE concern: Limited movement and uncomfortable body positions.</li>
+</ul>
+
+<h4>Object 5: Ergonomic Evaluation System</h4>
+<ul>
+<li>Characteristics: Measurements of posture, holding time, device weight, and user discomfort.</li>
+<li>Function: Evaluates ergonomic risks and identifies possible improvements.</li>
+<li>HFE concern: Reducing the risk of musculoskeletal discomfort.</li>
+</ul>
+
+<h4>2.2 Layered CIMpgr Process Model</h4>
+
+<p>
+The layered CIMpgr approach organizes the hair-drying process into different levels.
+Each layer has a specific responsibility, and information moves between the layers
+to support ergonomic evaluation and design improvements.
+</p>
+
+<h4>Layer 1: User Requirements</h4>
+<p>Identify the user's needs, including comfort, safety, ease of use, and reduced physical effort.</p>
+
+<h4>Layer 2: Product and System Design</h4>
+<p>Analyze the hair dryer's weight, handle dimensions, button placement, and overall design.</p>
+
+<h4>Layer 3: Task and Process Analysis</h4>
+<p>Break down the hair-drying process into individual tasks:</p>
+
+<ol>
+<li>Pick up the hair dryer.</li>
+<li>Grip the handle.</li>
+<li>Turn on the hair dryer.</li>
+<li>Adjust the speed and temperature.</li>
+<li>Move the hair dryer around the head.</li>
+<li>Turn off and put down the hair dryer.</li>
+</ol>
+
+<h4>Layer 4: Ergonomic Risk Assessment</h4>
+<p>
+Evaluate wrist posture, arm position, grip effort, and duration of use.
+Measurements and ergonomic assessment methods can help identify possible risks.
+</p>
+
+<h4>Layer 5: Design Improvement and Feedback</h4>
+<p>
+Use the evaluation results to recommend improvements, such as reducing product weight,
+improving handle shape, or changing button placement. Test the improved design and
+repeat the evaluation.
+</p>
+
+<h4>2.3 Interaction Between the Layers</h4>
+
+<p>The five layers work together as one engineering system.</p>
+
+<p>
+The process begins by identifying user requirements. These requirements guide the product design.
+Next, the user performs the hair-drying tasks while the ergonomic evaluation system collects
+measurements and identifies possible problems.
+</p>
+
+<p>
+The results are then used to recommend design improvements. The improved design is evaluated
+again to determine whether it reduces ergonomic risks.
+</p>
+
+<p>
+This creates a continuous feedback process that supports safer and more comfortable hair-dryer use.
+</p>
+</div>
+
+<!-- STEP 3 -->
+
+<div class="section">
+<h3>Step 3: Engineering Process Diagram</h3>
+
+<div class="diagram-placeholder">
+    <h4>Object-Oriented, Layered CIMpgr Engineering Process Diagram</h4>
+    <p>Engineering diagram will be added here.</p>
+</div>
+
+<h4>3.1 Explanation of the Engineering Process Diagram</h4>
+
+<p>
+The diagram shows the five connected layers of the CIMpgr systems engineering
+model for the BetterUse Engineering Hair Dryer.
+</p>
+
+<p><strong>Layer 1 – User Requirements:</strong>
+The process starts by identifying user needs, including comfort, safety, and ease of use.
+</p>
+
+<p><strong>Layer 2 – Product and System Design:</strong>
+The hair dryer's weight, handle shape, button placement, and other design characteristics are examined.
+</p>
+
+<p><strong>Layer 3 – Task and Process Analysis:</strong>
+The hair-drying process is divided into six tasks, from picking up the hair dryer
+to turning it off and putting it down.
+</p>
+
+<p><strong>Layer 4 – Ergonomic Risk Assessment:</strong>
+The user's wrist angle, arm position, grip effort, and holding time are evaluated
+to identify possible ergonomic risks.
+</p>
+
+<p><strong>Layer 5 – Design Improvement and Feedback:</strong>
+Based on the evaluation results, improvements are recommended. The design is
+then tested again to check whether ergonomic risks have been reduced.
+</p>
+
+<h4>3.2 Feedback Loop</h4>
+
+<p>
+The feedback loop connects the final layer back to the beginning of the process.
+If testing shows that the hair dryer still causes discomfort or excessive physical effort,
+the design requirements are reviewed and the process is repeated.
+</p>
+
+<p>
+This makes the model a continuous engineering improvement system rather than
+a one-time evaluation.
+</p>
+</div>
+
+<!-- STEP 4 -->
+
+<div class="section">
+<h3>Step 4: Mathematical and Ergonomic Analysis</h3>
+
+<h4>4.1 Hair Dryer Weight and Force Analysis</h4>
+
+<p>
+The weight of a hair dryer affects how much force the user must apply while holding it.
+A heavier hair dryer may increase muscle fatigue during long periods of use.
+</p>
+
+<p>We can calculate the gravitational force using:</p>
+
+<div class="equation">F = m × g</div>
+
+<p>Where:</p>
+<ul>
+<li>F = Gravitational force (N)</li>
+<li>m = Mass of the hair dryer (kg)</li>
+<li>g = Gravitational acceleration (9.81 m/s²)</li>
+</ul>
+
+<h4>Example Calculation</h4>
+
+<p>Assume the hair dryer weighs 0.7 kg.</p>
+
+<div class="equation">
+F = 0.7 × 9.81<br>
+F = 6.87 N
+</div>
+
+<p>
+This means the user must support approximately 6.87 N of gravitational force
+while holding the hair dryer.
+</p>
+
+<p>If we reduce the weight to 0.5 kg:</p>
+
+<div class="equation">
+F = 0.5 × 9.81<br>
+F = 4.91 N
+</div>
+
+<p>Percentage reduction:</p>
+
+<div class="equation">
+(6.87 − 4.91) / 6.87 × 100 = 28.6%
+</div>
+
+<div class="result">
+<strong>Engineering Result:</strong>
+Reducing the hair dryer's mass from 0.7 kg to 0.5 kg decreases its gravitational
+force by approximately 28.6%. This may help reduce the physical effort required during use.
+</div>
+
+<h4>4.2 Wrist Torque Analysis</h4>
+
+<p>
+When holding a hair dryer, the weight creates a turning effect called torque.
+The torque depends on the weight of the device and the distance between its
+center of mass and the wrist joint.
+</p>
+
+<p>Equation:</p>
+
+<div class="equation">T = F × d × sin(θ)</div>
+
+<p>Where:</p>
+<ul>
+<li>T = Torque (N·m)</li>
+<li>F = Gravitational force (N)</li>
+<li>d = Distance from the wrist to the hair dryer's center of mass (m)</li>
+<li>θ = Angle between the wrist-to-center-of-mass direction and gravity</li>
+</ul>
+
+<h4>Example Calculation</h4>
+
+<p>Assume:</p>
+<ul>
+<li>Hair dryer mass = 0.7 kg</li>
+<li>Distance = 0.15 m</li>
+<li>Angle = 90°</li>
+</ul>
+
+<div class="equation">
+T = 6.87 × 0.15 × sin(90°)<br>
+T = 1.03 N·m
+</div>
+
+<p>For a lighter hair dryer weighing 0.5 kg, with the same distance and angle:</p>
+
+<div class="equation">
+T = 4.91 × 0.15 × 1<br>
+T = 0.74 N·m
+</div>
+
+<div class="result">
+<strong>Engineering Result:</strong>
+Reducing the hair dryer's weight decreases the gravitational torque about
+the wrist from approximately 1.03 N·m to 0.74 N·m.
+This may reduce the muscular effort required to maintain the same position.
+</div>
+
+<h4>4.3 Holding Time and Muscle Fatigue</h4>
+
+<p>
+Holding a hair dryer for a long time can increase muscle fatigue,
+especially when the arm is raised.
+</p>
+
+<p>
+For this analysis, we can compare how long a user holds the hair dryer
+during different drying sessions.
+</p>
+
+<p>Example:</p>
+<ul>
+<li>User A: 5 minutes</li>
+<li>User B: 10 minutes</li>
+<li>User C: 15 minutes</li>
+</ul>
+
+<p>We can calculate the total holding time:</p>
+
+<div class="equation">
+Total Time = 5 + 10 + 15 = 30 minutes<br>
+Average Holding Time = 30 / 3<br>
+Average Holding Time = 10 minutes
+</div>
+
+<div class="result">
+<strong>Engineering Result:</strong>
+The average holding time is 10 minutes. Longer holding periods may increase
+discomfort, so holding duration should be considered when evaluating ergonomic risks.
+</div>
+
+<h4>4.4 Ergonomic Risk Assessment Using REBA</h4>
+
+<p>
+REBA stands for Rapid Entire Body Assessment. It is an ergonomic assessment
+method used to evaluate postural risks during physical tasks.
+</p>
+
+<p>For the hair dryer, we can examine:</p>
+<ul>
+<li>Neck position</li>
+<li>Trunk position</li>
+<li>Arm elevation</li>
+<li>Wrist position</li>
+<li>Grip quality</li>
+<li>Repetitive movements</li>
+</ul>
+
+<p>
+The REBA method assigns scores based on body posture, force or load,
+coupling, and activity. The scores are combined using the official REBA scoring tables.
+</p>
+
+<h4>REBA Risk Levels</h4>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>REBA Score</th>
+<th>Risk Level</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>Negligible</td><td>None necessary</td></tr>
+<tr><td>2–3</td><td>Low</td><td>May be necessary</td></tr>
+<tr><td>4–7</td><td>Medium</td><td>Necessary</td></tr>
+<tr><td>8–10</td><td>High</td><td>Necessary soon</td></tr>
+<tr><td>11–15</td><td>Very high</td><td>Necessary now</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>
+For our project, we would observe the user during hair drying,
+record their body positions, and calculate a REBA score using
+the official assessment method.
+</p>
+
+<div class="result">
+<strong>Engineering Result:</strong>
+The REBA assessment can help identify which hair-drying positions
+require ergonomic improvements.
+</div>
+
+<h4>4.5 Overall Engineering Analysis</h4>
+
+<p>
+The calculations show that reducing hair dryer weight can decrease
+the force and torque experienced by the user. Holding time and body
+posture are also important factors in evaluating ergonomic risks.
+</p>
+
+<p class="note">
+Note: All masses, distances, angles, and holding times used in these
+calculations are hypothetical examples, not measurements collected from participants.
+</p>
+
+<p>
+By combining mathematical calculations with ergonomic assessment methods,
+BetterUse Engineering can compare different hair dryer designs and identify
+improvements that may increase comfort and reduce physical strain.
+</p>
+</div>
+
+<!-- STEP 5 -->
+
+<div class="section">
+<h3>Step 5: Algorithm and Pseudocode</h3>
+
+<h4>5.1 Purpose of the Algorithm</h4>
+
+<p>
+This algorithm evaluates the ergonomic risks of using the BetterUse Engineering Hair Dryer.
+It uses the same measurement and assessment rules each time so the evaluation is repeatable.
+</p>
+
+<h4>5.2 Input Measurements and Procedure</h4>
+
+<ol>
+<li>
+Record the hair dryer mass (kg), distance from the wrist to the center of mass (m),
+angle between that direction and gravity (degrees), holding time (minutes),
+and observed body postures.
+</li>
+<li>Calculate gravitational force: F = m × 9.81 (N).</li>
+<li>Calculate wrist torque: T = F × d × sin(θ) (N·m).</li>
+<li>
+Assess the observed posture using the official REBA scoring tables,
+including posture, load, coupling, and activity adjustments.
+</li>
+<li>
+If REBA ≥ 4, identify relevant posture problems and recommend design improvements.
+Otherwise, document the low or negligible posture risk.
+</li>
+<li>
+Repeat the measurements with an improved design under comparable conditions,
+and compare the results.
+</li>
+</ol>
+
+<h4>5.3 Pseudocode</h4>
+
+<pre><code>START
+
+INPUT mass_kg, distance_m, angle_degrees, holding_time_min
+INPUT observed_posture_and_REBA_factors
+
+gravity = 9.81
+
+force_N = mass_kg * gravity
+
+angle_radians = angle_degrees * π / 180
+
+torque_Nm = force_N * distance_m * sin(angle_radians)
+
+REBA_score = Calculate_REBA_using_official_tables(
+    observed_posture_and_REBA_factors
+)
+
+IF REBA_score >= 4 THEN
+    DISPLAY "Ergonomic improvement required"
+    RECOMMEND improvements based on observed risk factors
+ELSE
+    DISPLAY "Low or negligible posture risk"
+ENDIF
+
+SAVE force_N, torque_Nm, holding_time_min, REBA_score
+
+REPEAT assessment for proposed improved design
+
+COMPARE original and improved results
+
+END</code></pre>
+
+<p>
+The Calculate_REBA_using_official_tables function represents the standard REBA
+assessment procedure; the score cannot be calculated from weight and holding time alone.
+</p>
+
+<h4>5.4 Example of Algorithm Application</h4>
+
+<p>
+For the hypothetical original design, m = 0.7 kg, d = 0.15 m, and θ = 90°.
+The force is 6.87 N and wrist torque is 1.03 N·m.
+For the hypothetical lighter design, m = 0.5 kg with the same distance and angle,
+force is 4.91 N and wrist torque is 0.74 N·m.
+Both decrease by about 28.6%.
+</p>
+
+<p>
+These are theoretical comparisons, not actual test results.
+An observed REBA score and user discomfort measurements would be needed
+to determine whether the improved design reduces overall ergonomic risk.
+</p>
+
+<h4>5.5 Connection to the Layered CIMpgr Model</h4>
+
+<p>
+The algorithm takes input from the user, hair dryer, and working environment objects.
+Layer 4 processes the measurements and posture observations;
+Layer 5 uses the results to recommend changes and sends feedback to the earlier
+design layers. This makes the evaluation systematic and repeatable.
+</p>
+</div>
+
+<!-- STEP 6 -->
+
+<div class="section">
+<h3>Step 6: Explanation and Practical Application</h3>
+
+<h4>6.1 Practical Application of the CIMpgr Model</h4>
+
+<p>
+The object-oriented, layered CIMpgr systems engineering process model can be used
+to evaluate and improve the ergonomic design of the BetterUse Engineering Hair Dryer.
+</p>
+
+<p>
+In real life, people use hair dryers for several minutes while moving their arms
+and wrists in different directions. These movements may cause discomfort or muscle fatigue,
+especially when the hair dryer is heavy or difficult to hold.
+</p>
+
+<p>
+Our engineering model helps identify these problems by dividing the hair-drying process
+into five connected layers: user requirements, product design, task analysis,
+ergonomic risk assessment, and design improvement.
+</p>
+
+<p>
+Each layer provides information to the next layer, allowing engineers
+to evaluate the product systematically.
+</p>
+
+<h4>6.2 Applying the Model to a Real Hair-Drying Task</h4>
+
+<p>To apply our model, we can conduct a simple ergonomic evaluation.</p>
+
+<h4>Step 1: Observe the User</h4>
+<p>
+Ask a participant to use a hair dryer during a normal hair-drying task.
+Observe their arm movements, wrist positions, and grip.
+</p>
+
+<h4>Step 2: Collect Measurements</h4>
+<p>
+Record the hair dryer's weight, holding time, wrist position, and arm elevation.
+Ask the participant to rate their discomfort on a scale from 0 to 10,
+where 0 means no discomfort and 10 means extreme discomfort.
+</p>
+
+<h4>Step 3: Analyze the Results</h4>
+<p>
+Use the equations from Step 4 to calculate gravitational force and wrist torque.
+Apply the REBA assessment method to evaluate posture-related ergonomic risks.
+</p>
+
+<h4>Step 4: Recommend Improvements</h4>
+<p>Based on the results, engineers can recommend:</p>
+<ul>
+<li>Reducing the weight of the hair dryer.</li>
+<li>Improving the handle shape for a more comfortable grip.</li>
+<li>Adjusting button placement for easier operation.</li>
+<li>Improving weight distribution to reduce wrist torque.</li>
+<li>Reducing unnecessary vibration and noise.</li>
+</ul>
+
+<h4>Step 5: Test the Improved Design</h4>
+<p>
+Repeat the same hair-drying task using the improved design.
+Compare the measurements and user discomfort ratings with the original design.
+</p>
+
+<p>
+This process allows engineers to evaluate whether the changes improve the user's experience.
+</p>
+
+<h4>6.3 Expected Engineering Benefits</h4>
+
+<p>The proposed improvements may provide several benefits.</p>
+
+<h4>1. Reduced Physical Effort</h4>
+<p>
+Based on our example calculations, reducing the hair dryer mass from 0.7 kg
+to 0.5 kg decreases gravitational force by approximately 28.6%.
+</p>
+
+<h4>2. Lower Wrist Torque</h4>
+<p>
+The example wrist torque decreases from 1.03 N·m to 0.74 N·m when the hair
+dryer's mass is reduced while keeping the same center-of-mass distance and orientation.
+</p>
+
+<h4>3. Improved User Comfort</h4>
+<p>
+A better handle design and balanced weight distribution may reduce discomfort
+during longer hair-drying sessions.
+</p>
+
+<h4>4. Improved Product Usability</h4>
+<p>
+Easy-to-reach buttons and a comfortable grip may help users control
+the hair dryer without unnecessary wrist movements.
+</p>
+
+<h4>5. Repeatable Ergonomic Evaluation</h4>
+<p>
+The same engineering procedure can be repeated for different hair dryer designs,
+allowing engineers to compare their performance using consistent measurements.
+</p>
+
+<p>
+These benefits are expected outcomes that would need to be confirmed
+through physical testing.
+</p>
+
+<h4>6.4 Conclusion</h4>
+
+<p>
+In this assignment, I developed an object-oriented, layered CIMpgr systems
+engineering process model for the BetterUse Engineering Hair Dryer.
+</p>
+
+<p>
+The model includes five connected layers that explain how user requirements,
+product design, task analysis, ergonomic evaluation, and design improvements work together.
+</p>
+
+<p>
+I also used mathematical equations to analyze gravitational force and wrist torque.
+The example calculations showed that reducing the hair dryer's mass from 0.7 kg
+to 0.5 kg can decrease gravitational force and wrist torque by approximately
+28.6% under the same holding conditions.
+</p>
+
+<p>
+The algorithm and pseudocode provide a repeatable method for evaluating
+ergonomic risks and recommending improvements.
+</p>
+
+<p>
+Overall, this project demonstrates how Human Factors Engineering can be applied
+to everyday products. By using engineering calculations, ergonomic assessment
+methods, and a structured process model, we can develop hair dryers that are
+more comfortable, easier to use, and potentially safer for users.
+</p>
+</div>
+
+</div>
+</body>
+</html>
