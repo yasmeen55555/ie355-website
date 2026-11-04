@@ -1,1 +1,952 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IE 355 - Assignment 4 | BetterUse Engineering</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #fff7fa 0%, #ffeef5 50%, #fff8fb 100%);
+    font-family: Arial, sans-serif;
+    color: #624c55;
+    margin: 0;
+    padding: 40px 20px;
+    line-height: 1.75;
+}
+
+.container {
+    position: relative;
+    max-width: 1100px;
+    margin: auto;
+    padding: 45px;
+    background: linear-gradient(145deg, #fff0f5, #ffdce8, #fff0f5);
+    border: 3px solid #f3a0bd;
+    outline: 7px solid #ffe0eb;
+    outline-offset: 5px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(232,93,145,.18);
+    overflow: hidden;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+h1, h2, h3 {
+    color: #b76e79;
+}
+
+h1 {
+    text-align: center;
+    font-size: 34px;
+}
+
+.subtitle, .company {
+    text-align: center;
+}
+
+.company {
+    font-weight: bold;
+    color: #b76e79;
+    font-size: 21px;
+}
+
+.top-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 30px;
+}
+
+.main-bow {
+    font-size: 65px;
+    animation: bowFloat 2.5s ease-in-out infinite;
+}
+
+.small-bow {
+    font-size: 38px;
+    animation: bowFloat 3s ease-in-out infinite;
+}
+
+.heart {
+    color: #e85d91;
+    animation: heartbeat 1.7s infinite;
+}
+
+@keyframes bowFloat {
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes heartbeat {
+    50% { transform: scale(1.2); }
+}
+
+.floating-decor {
+    position: absolute;
+    color: #ee7faa;
+    font-size: 25px;
+    opacity: .6;
+    pointer-events: none;
+    animation: floatAround 5s ease-in-out infinite;
+}
+
+@keyframes floatAround {
+    0%,100% { transform: translate(0,0); }
+    50% { transform: translate(10px,-25px) rotate(10deg); }
+}
+
+.celebration {
+    position: absolute;
+    top: -50px;
+    font-size: 22px;
+    color: #e85d91;
+    opacity: .65;
+    pointer-events: none;
+    animation: falling 9s linear infinite;
+}
+
+@keyframes falling {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+    15% { opacity: .7; }
+    100% { transform: translateY(7000px) rotate(360deg); opacity: 0; }
+}
+
+.big-heart {
+    position: absolute;
+    font-size: 220px;
+    color: #f4a9c4;
+    opacity: .13;
+    pointer-events: none;
+}
+
+.left-heart { left: 2%; top: 20%; }
+.right-heart { right: 2%; top: 55%; }
+
+.back-button {
+    display: inline-block;
+    background: #f7d6df;
+    color: #6d4c55;
+    text-decoration: none;
+    padding: 12px 22px;
+    border: 2px solid #f3a0bd;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.back-button:hover {
+    background: #efbdca;
+}
+
+.section {
+    background: rgba(255,255,255,.8);
+    padding: 28px;
+    margin: 28px 0;
+    border: 2px solid #f3a0bd;
+    border-radius: 20px;
+    box-shadow: 0 5px 18px rgba(232,93,145,.1);
+}
+
+.section h2 {
+    border-bottom: 2px solid #f3a0bd;
+    padding-bottom: 10px;
+}
+
+h3 {
+    margin-top: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    font-size: 14px;
+}
+
+th {
+    background: #e9a7bd;
+    color: #593e48;
+}
+
+th, td {
+    border: 1px solid #e8afc1;
+    padding: 10px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background: #fff2f7;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+.formula {
+    background: #fff0f6;
+    border-left: 5px solid #e85d91;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.figure {
+    text-align: center;
+    margin: 30px auto;
+}
+
+.figure img {
+    max-width: 100%;
+    width: 800px;
+    height: auto;
+    border: 3px solid #f3a0bd;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(232,93,145,.2);
+}
+
+figcaption {
+    margin-top: 12px;
+    font-size: 14px;
+    font-style: italic;
+    color: #805c68;
+}
+
+.note {
+    background: #fff7d9;
+    padding: 14px;
+    border-radius: 10px;
+    border-left: 4px solid #d6ae57;
+}
+
+a {
+    color: #b44778;
+}
+
+li {
+    margin-bottom: 9px;
+}
+
+.footer {
+    text-align: center;
+    color: #a56a81;
+    padding: 20px;
+}
+
+@media(max-width:650px) {
+    .container { padding: 18px; }
+    .section { padding: 16px; }
+    h1 { font-size: 25px; }
+    .top-decoration { gap: 6px; }
+    .main-bow { font-size: 42px; }
+    .small-bow { font-size: 25px; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<!-- FLOATING DECORATIONS -->
+<span class="celebration" style="left:8%;animation-delay:0s">♡</span>
+<span class="celebration" style="left:18%;animation-delay:2s">✦</span>
+<span class="celebration" style="left:29%;animation-delay:4s">♥</span>
+<span class="celebration" style="left:40%;animation-delay:1s">✧</span>
+<span class="celebration" style="left:52%;animation-delay:3s">♡</span>
+<span class="celebration" style="left:63%;animation-delay:5s">✦</span>
+<span class="celebration" style="left:74%;animation-delay:2.5s">♥</span>
+<span class="celebration" style="left:85%;animation-delay:4.5s">♡</span>
+<span class="celebration" style="left:94%;animation-delay:1.5s">✧</span>
+
+<div class="big-heart left-heart">♡</div>
+<div class="big-heart right-heart">♡</div>
+
+<span class="floating-decor" style="left:5%;top:12%">♡</span>
+<span class="floating-decor" style="left:12%;top:55%">✦</span>
+<span class="floating-decor" style="left:20%;top:78%">♥</span>
+<span class="floating-decor" style="left:31%;top:35%">♡</span>
+<span class="floating-decor" style="left:42%;top:72%">✧</span>
+<span class="floating-decor" style="left:57%;top:20%">♥</span>
+<span class="floating-decor" style="left:68%;top:65%">♡</span>
+<span class="floating-decor" style="left:78%;top:38%">✦</span>
+<span class="floating-decor" style="left:88%;top:75%">♡</span>
+<span class="floating-decor" style="left:94%;top:18%">✧</span>
+
+<div class="content">
+
+<a class="back-button" href="index.html">♡ Back to Assignments</a>
+
+<div class="top-decoration">
+    <span class="heart">♡</span>
+    <span class="small-bow">🎀</span>
+    <span class="heart">♥</span>
+    <span class="main-bow">🎀</span>
+    <span class="heart">♡</span>
+    <span class="small-bow">🎀</span>
+    <span class="heart">♥</span>
+</div>
+
+<h1>Assignment 4</h1>
+<p class="subtitle">IE 355 — Human Factors Ergonomics</p>
+<p class="company">BetterUse Engineering</p>
+<p class="subtitle">
+DFMEA / PFMEA Risk Analysis, REBA and NIOSH Lifting Equation
+</p>
+
+<div class="note">
+<strong>Engineering Analysis Note:</strong>
+All ratings, measurements and improvement scenarios in this report are illustrative engineering assumptions. They are not actual product test results or workplace measurements. REBA scoring and NIOSH multipliers require verification using official worksheets before real-world implementation.
+</div>
+
+<!-- SECTION 1 -->
+<section class="section">
+<h2>1. Introduction</h2>
+
+<p>BetterUse Engineering is a virtual engineering company focused on improving the safety, comfort, and usability of everyday products. For this assignment, the selected product is a handheld hair dryer.</p>
+
+<p>Traditional handheld hair dryers can create ergonomic challenges, including arm and shoulder fatigue, uncomfortable wrist positions, repetitive movements, and prolonged exposure to noise. These problems may increase physical discomfort during extended use.</p>
+
+<p>The purpose of this assignment is to identify potential product and process failures using Design Failure Mode and Effects Analysis (DFMEA) and Process Failure Mode and Effects Analysis (PFMEA). The project also applies Rapid Entire Body Assessment (REBA) to evaluate working posture and the NIOSH Lifting Equation to assess manual lifting risks during a manufacturing or packaging task.</p>
+
+<p>The results will be used to recommend engineering improvements that reduce ergonomic risks and improve user safety, product usability, and workplace efficiency.</p>
+</section>
+
+<!-- SECTION 2 -->
+<section class="section">
+<h2>2. Design Failure Mode and Effects Analysis (DFMEA)</h2>
+
+<h3>2.1 Purpose of DFMEA</h3>
+<p>DFMEA is a systematic engineering method used to identify potential product design failures, evaluate their effects, and prioritize improvements before a product is manufactured.</p>
+
+<p>At BetterUse Engineering, DFMEA is applied to the handheld hair dryer to identify ergonomic and safety problems related to product weight, handle design, wrist posture, noise, and stability.</p>
+
+<h3>2.2 DFMEA Risk Calculation</h3>
+
+<div class="formula">RPN = S × O × D</div>
+
+<p>Where:</p>
+<ul>
+<li><strong>S — Severity:</strong> How serious the failure's effects are (1–10).</li>
+<li><strong>O — Occurrence:</strong> How likely the failure is to occur (1–10).</li>
+<li><strong>D — Detection:</strong> How unlikely the failure is to be detected before it affects the user (1–10).</li>
+</ul>
+
+<p>A higher RPN indicates a greater need for investigation and corrective action. Severity must also be considered independently, especially for safety-related failures.</p>
+
+<h3>2.3 DFMEA Risk Analysis Table</h3>
+
+<p>The following ratings are illustrative engineering estimates, not results from physical testing.</p>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>Design Component</th>
+<th>Potential Failure Mode</th>
+<th>Effect on User</th>
+<th>S</th><th>O</th><th>D</th><th>RPN</th>
+</tr>
+<tr><td>Product weight</td><td>Hair dryer too heavy</td><td>Arm and shoulder fatigue</td><td>7</td><td>7</td><td>5</td><td>245</td></tr>
+<tr><td>Handle design</td><td>Poor grip shape</td><td>Hand discomfort and slipping</td><td>6</td><td>6</td><td>5</td><td>180</td></tr>
+<tr><td>Wrist positioning</td><td>Handle forces wrist bending</td><td>Wrist strain during styling</td><td>7</td><td>6</td><td>6</td><td>252</td></tr>
+<tr><td>Motor and airflow</td><td>Excessive operating noise</td><td>Discomfort and noise exposure</td><td>6</td><td>6</td><td>4</td><td>144</td></tr>
+<tr><td>Product stability</td><td>No secure hands-free stand</td><td>Repeated holding and unstable placement</td><td>6</td><td>7</td><td>5</td><td>210</td></tr>
+</table>
+</div>
+
+<h3>2.4 Example RPN Calculation</h3>
+
+<p>For wrist positioning:</p>
+<p>Severity = 7, Occurrence = 6, Detection = 6.</p>
+
+<div class="formula">RPN = 7 × 6 × 6 = 252</div>
+
+<p>This is the highest RPN in the illustrative DFMEA analysis, so wrist positioning is a priority for design improvement.</p>
+
+<h3>2.5 Proposed Engineering Improvements</h3>
+<ol>
+<li><strong>Lightweight design:</strong> Reduce hair dryer mass to decrease arm and shoulder fatigue.</li>
+<li><strong>Ergonomic handle:</strong> Use a contoured, non-slip handle to improve grip comfort.</li>
+<li><strong>Improved wrist positioning:</strong> Adjust the handle angle to support a more neutral wrist posture.</li>
+<li><strong>Noise reduction:</strong> Improve fan and motor design and reduce vibration.</li>
+<li><strong>Adjustable stand:</strong> Add a stable stand for appropriate hands-free operation.</li>
+</ol>
+
+<h3>2.6 Expected Results After Redesign</h3>
+
+<p>These are proposed risk reductions that must be validated through testing.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Failure Mode</th><th>Initial RPN</th><th>Proposed S</th><th>Proposed O</th><th>Proposed D</th><th>Proposed RPN</th></tr>
+<tr><td>Excessive weight</td><td>245</td><td>7</td><td>3</td><td>3</td><td>63</td></tr>
+<tr><td>Poor grip</td><td>180</td><td>6</td><td>3</td><td>3</td><td>54</td></tr>
+<tr><td>Wrist bending</td><td>252</td><td>7</td><td>2</td><td>3</td><td>42</td></tr>
+<tr><td>Excessive noise</td><td>144</td><td>6</td><td>3</td><td>3</td><td>54</td></tr>
+<tr><td>Lack of stand</td><td>210</td><td>6</td><td>2</td><td>3</td><td>36</td></tr>
+</table>
+</div>
+
+<div class="formula">
+RPN reduction = (252 − 42) / 252 × 100 = 83.3%
+</div>
+
+<p>The proposed redesign reduces the estimated risk priority by 83.3% for wrist positioning, assuming the improvements achieve the projected occurrence and detection ratings.</p>
+
+<h3>2.7 Conclusion</h3>
+<p>The DFMEA identifies wrist positioning, excessive weight, and the absence of stable hands-free support as major design concerns. By prioritizing ergonomic handle geometry, reducing product weight, and improving stability, BetterUse Engineering can develop a safer and more comfortable handheld hair dryer.</p>
+
+<p>The next stage is to evaluate manufacturing and assembly failures using PFMEA.</p>
+
+<figure class="figure">
+<img src="figure1.jpeg" alt="Hair dryer design and ergonomic improvements">
+<figcaption>Figure 1. Handheld hair dryer design and proposed ergonomic improvements (illustrative).</figcaption>
+</figure>
+</section>
+
+<!-- SECTION 3 -->
+<section class="section">
+<h2>3. Process Failure Mode and Effects Analysis (PFMEA)</h2>
+
+<h3>3.1 Purpose of PFMEA</h3>
+<p>PFMEA identifies possible failures during manufacturing, assembly, inspection, and packaging.</p>
+
+<p>At BetterUse Engineering, PFMEA is applied to ergonomic handheld hair dryer production to identify problems affecting product quality, employee safety, and customer satisfaction.</p>
+
+<p>The analysis focuses on handle assembly, motor installation, electrical wiring, quality inspection, and packaging/material handling.</p>
+
+<h3>3.2 PFMEA Risk Calculation</h3>
+<div class="formula">RPN = Severity × Occurrence × Detection = S × O × D</div>
+
+<p>Each factor is rated from 1 to 10. A higher detection rating means a failure is less likely to be detected by existing controls.</p>
+
+<h3>3.3 PFMEA Risk Analysis Table</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Manufacturing Process</th><th>Potential Failure</th><th>Effect</th><th>S</th><th>O</th><th>D</th><th>RPN</th></tr>
+<tr><td>Handle assembly</td><td>Handle attached incorrectly</td><td>Poor grip and wrist discomfort</td><td>7</td><td>6</td><td>5</td><td>210</td></tr>
+<tr><td>Motor installation</td><td>Motor mounted improperly</td><td>Excessive vibration and noise</td><td>7</td><td>5</td><td>5</td><td>175</td></tr>
+<tr><td>Electrical wiring</td><td>Incorrect wire connection</td><td>Electric shock or overheating</td><td>10</td><td>3</td><td>6</td><td>180</td></tr>
+<tr><td>Quality inspection</td><td>Defective product not detected</td><td>Unsafe product reaches customer</td><td>9</td><td>5</td><td>7</td><td>315</td></tr>
+<tr><td>Packaging and handling</td><td>Repetitive bending and lifting</td><td>Back and shoulder strain</td><td>7</td><td>7</td><td>5</td><td>245</td></tr>
+</table>
+</div>
+
+<h3>3.4 Example RPN Calculation</h3>
+<p>For quality inspection: S = 9, O = 5, D = 7.</p>
+
+<div class="formula">RPN = 9 × 5 × 7 = 315</div>
+
+<p>This is the highest PFMEA RPN. Electrical wiring also requires urgent attention because its severity rating is 10, even though its RPN is lower.</p>
+
+<h3>3.5 Root Cause Analysis</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Failure Mode</th><th>Possible Root Cause</th></tr>
+<tr><td>Incorrect handle assembly</td><td>Poor alignment fixtures or unclear assembly instructions</td></tr>
+<tr><td>Improper motor installation</td><td>Incorrect mounting procedure or inadequate fastening</td></tr>
+<tr><td>Incorrect electrical wiring</td><td>Missing connector identification or insufficient electrical testing</td></tr>
+<tr><td>Defective product not detected</td><td>Incomplete inspection checklist or inadequate testing</td></tr>
+<tr><td>Repetitive bending and lifting</td><td>Poor workstation height and inconvenient material placement</td></tr>
+</table>
+</div>
+
+<h3>3.6 Proposed Engineering Improvements</h3>
+<ol>
+<li><strong>Handle assembly:</strong> Introduce alignment fixtures and standardized visual instructions.</li>
+<li><strong>Motor installation:</strong> Use standardized fastening procedures and vibration testing.</li>
+<li><strong>Electrical wiring:</strong> Identify connectors clearly and conduct electrical safety testing.</li>
+<li><strong>Quality inspection:</strong> Implement inspection checklists, functional testing, and documented results.</li>
+<li><strong>Packaging:</strong> Introduce adjustable workstations, improved material placement, and handling assistance.</li>
+</ol>
+
+<h3>3.7 Expected PFMEA Results After Improvements</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Failure Mode</th><th>Initial RPN</th><th>Proposed S</th><th>Proposed O</th><th>Proposed D</th><th>Proposed RPN</th></tr>
+<tr><td>Incorrect handle assembly</td><td>210</td><td>7</td><td>3</td><td>3</td><td>63</td></tr>
+<tr><td>Improper motor installation</td><td>175</td><td>7</td><td>2</td><td>3</td><td>42</td></tr>
+<tr><td>Incorrect electrical wiring</td><td>180</td><td>10</td><td>1</td><td>2</td><td>20</td></tr>
+<tr><td>Defective product not detected</td><td>315</td><td>9</td><td>2</td><td>2</td><td>36</td></tr>
+<tr><td>Repetitive bending and lifting</td><td>245</td><td>7</td><td>3</td><td>3</td><td>63</td></tr>
+</table>
+</div>
+
+<h3>3.8 Percentage Risk Priority Reduction</h3>
+
+<div class="formula">
+Percentage reduction = [(315 − 36) / 315] × 100 = 88.6%
+</div>
+
+<p>This is an estimated 88.6% reduction in RPN if the proposed controls achieve their intended effects. It does not mean the actual probability of failure decreases by 88.6%.</p>
+
+<h3>3.9 Conclusion</h3>
+<p>PFMEA identifies quality inspection, repetitive material handling, and handle assembly as important improvement opportunities. Electrical wiring requires particular attention because of severe safety consequences.</p>
+
+<p>Improved assembly procedures, electrical testing, inspection, and workstation ergonomics can reduce potential failures and improve product quality and employee safety.</p>
+
+<figure class="figure">
+<img src="figure2.jpeg" alt="Manufacturing process and PFMEA">
+<figcaption>Figure 2. Manufacturing process and PFMEA risk analysis (illustrative).</figcaption>
+</figure>
+</section>
+
+<!-- SECTION 4 -->
+<section class="section">
+<h2>4. Rapid Entire Body Assessment (REBA)</h2>
+
+<h3>4.1 Purpose of REBA</h3>
+<p>Rapid Entire Body Assessment (REBA) evaluates working postures associated with musculoskeletal disorder risks.</p>
+
+<p>It considers the neck, trunk, legs, upper arm, lower arm, wrist, external force, grip quality, and activity.</p>
+
+<p>At BetterUse Engineering, REBA is applied to a person using a handheld hair dryer during extended styling.</p>
+
+<h3>4.2 Description of the Selected Task</h3>
+
+<p><strong>Task:</strong> Drying and styling hair using a handheld hair dryer.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Variable</th><th>Illustrative Assumption</th></tr>
+<tr><td>Hair dryer weight</td><td>0.8 kg</td></tr>
+<tr><td>Task duration</td><td>15 minutes</td></tr>
+<tr><td>Upper arm angle</td><td>70°</td></tr>
+<tr><td>Elbow angle</td><td>100°</td></tr>
+<tr><td>Wrist angle</td><td>25° extension</td></tr>
+<tr><td>Neck flexion</td><td>15°</td></tr>
+<tr><td>Trunk flexion</td><td>10°</td></tr>
+<tr><td>Leg position</td><td>Standing, both feet supported</td></tr>
+<tr><td>Activity</td><td>Repetitive styling movements</td></tr>
+</table>
+</div>
+
+<p>These are hypothetical assumptions, not measurements from an actual participant.</p>
+
+<h3>4.3 REBA Scoring Procedure</h3>
+
+<h3>Group A — Neck, Trunk, and Legs</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Body Part</th><th>Assumed Position</th><th>REBA Score</th></tr>
+<tr><td>Neck</td><td>15° flexion, no twisting</td><td>1</td></tr>
+<tr><td>Trunk</td><td>10° flexion, no twisting</td><td>2</td></tr>
+<tr><td>Legs</td><td>Standing with both feet supported</td><td>1</td></tr>
+</table>
+</div>
+
+<p>Illustrative Table A lookup = 2.</p>
+<p>Load/force adjustment = 0.</p>
+
+<div class="formula">Score A = 2 + 0 = 2</div>
+
+<h3>Group B — Upper Arm, Lower Arm, and Wrist</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Body Part</th><th>Assumed Position</th><th>REBA Score</th></tr>
+<tr><td>Upper arm</td><td>70° flexion, no shoulder elevation</td><td>3</td></tr>
+<tr><td>Lower arm</td><td>100° elbow angle</td><td>1</td></tr>
+<tr><td>Wrist</td><td>25° extension, no twisting</td><td>2</td></tr>
+</table>
+</div>
+
+<p>Illustrative Table B lookup = 4.</p>
+<p>Coupling adjustment = 0.</p>
+
+<div class="formula">Score B = 4 + 0 = 4</div>
+
+<h3>4.4 Final REBA Score</h3>
+
+<p>Illustrative Score A = 2 and Score B = 4.</p>
+<p>Table C lookup = 3.</p>
+<p>Repetitive activity adjustment = +1.</p>
+
+<div class="formula">Final REBA Score = 3 + 1 = 4</div>
+
+<h3>4.5 REBA Risk Interpretation</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Final REBA Score</th><th>Risk Level</th><th>Recommended Action</th></tr>
+<tr><td>1</td><td>Negligible</td><td>No action normally necessary</td></tr>
+<tr><td>2–3</td><td>Low</td><td>Change may be needed</td></tr>
+<tr><td>4–7</td><td>Medium</td><td>Further investigation and changes needed</td></tr>
+<tr><td>8–10</td><td>High</td><td>Investigate and implement changes soon</td></tr>
+<tr><td>11–15</td><td>Very high</td><td>Implement changes immediately</td></tr>
+</table>
+</div>
+
+<p><strong>Illustrative result: REBA = 4 (Medium Risk).</strong></p>
+
+<p>REBA is a posture-screening method, not a direct calculation of injury probability.</p>
+
+<h3>4.6 Proposed Ergonomic Improvements</h3>
+<ol>
+<li>Reduce hair dryer weight toward 0.5 kg.</li>
+<li>Improve handle geometry to support a neutral wrist.</li>
+<li>Add an adjustable stand for suitable hands-free styling.</li>
+<li>Keep the dryer closer to the body when possible.</li>
+<li>Reduce repetitive exposure through changes in arm position and recovery periods.</li>
+</ol>
+
+<h3>4.7 Proposed REBA Reassessment</h3>
+
+<p>For a hypothetical hands-free styling task using an adjustable stand:</p>
+
+<ul>
+<li>Neck flexion = 10°</li>
+<li>Trunk = upright</li>
+<li>Legs = both feet supported</li>
+<li>Upper arm = 15° flexion</li>
+<li>Lower arm = 90°</li>
+<li>Wrist = neutral</li>
+<li>No significant external load</li>
+<li>No sustained awkward posture</li>
+</ul>
+
+<p>Illustrative Group A score = 1.</p>
+<p>Illustrative Group B score = 1.</p>
+<p>Table C score = 1.</p>
+<p>Activity adjustment = 0.</p>
+
+<div class="formula">Proposed REBA Score = 1</div>
+
+<h3>4.8 Before-and-After Comparison</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Assessment</th><th>Original Task</th><th>Proposed Task</th></tr>
+<tr><td>Hair dryer weight</td><td>0.8 kg</td><td>0.5 kg</td></tr>
+<tr><td>Upper arm angle</td><td>70°</td><td>15°</td></tr>
+<tr><td>Wrist angle</td><td>25°</td><td>0°</td></tr>
+<tr><td>Final REBA score</td><td>4</td><td>1</td></tr>
+<tr><td>Risk classification</td><td>Medium</td><td>Negligible</td></tr>
+</table>
+</div>
+
+<div class="formula">
+REBA score reduction = [(4 − 1) / 4] × 100 = 75%
+</div>
+
+<p>This is a numerical score comparison, not a 75% reduction in injury probability.</p>
+
+<h3>4.9 Conclusion</h3>
+
+<p>The REBA analysis highlights raised-arm posture, wrist extension, and repetitive movements during handheld hair dryer use.</p>
+
+<p>The proposed stand, handle redesign, and lower product weight may reduce awkward postures and improve comfort.</p>
+
+<p>The results must be validated through actual observations, measured joint angles, and a completed REBA worksheet.</p>
+
+<figure class="figure">
+<img src="figure3.jpeg" alt="REBA posture assessment">
+<figcaption>Figure 3. REBA posture assessment and proposed ergonomic improvements (illustrative).</figcaption>
+</figure>
+</section>
+
+<!-- SECTION 5 -->
+<section class="section">
+<h2>5. NIOSH Lifting Equation Analysis</h2>
+
+<h3>5.1 Purpose of the NIOSH Lifting Equation</h3>
+
+<p>The Revised NIOSH Lifting Equation (RNLE) evaluates the physical demands of qualifying manual lifting tasks and estimates a recommended weight limit.</p>
+
+<p>At BetterUse Engineering, the equation is applied to a packaging employee lifting cartons of hair dryers from a low storage platform to a packing table.</p>
+
+<h3>5.2 Description of the Lifting Task</h3>
+
+<p><strong>Task:</strong> Lifting cartons from a storage platform onto a packing table.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Variable</th><th>Assumed Value</th></tr>
+<tr><td>Carton weight</td><td>12 kg</td></tr>
+<tr><td>Horizontal distance H</td><td>40 cm</td></tr>
+<tr><td>Initial vertical hand height V</td><td>50 cm</td></tr>
+<tr><td>Vertical travel distance D</td><td>50 cm</td></tr>
+<tr><td>Asymmetry angle A</td><td>30°</td></tr>
+<tr><td>Lifting frequency</td><td>1 lift/minute</td></tr>
+<tr><td>Task duration</td><td>1 hour</td></tr>
+<tr><td>Coupling quality</td><td>Good</td></tr>
+</table>
+</div>
+
+<p>The task assumes a two-handed lift, stable footing, and suitable environmental conditions.</p>
+
+<h3>5.3 NIOSH Recommended Weight Limit Formula</h3>
+
+<div class="formula">
+RWL = LC × HM × VM × DM × AM × FM × CM
+</div>
+
+<ul>
+<li>LC = Load Constant = 23 kg</li>
+<li>HM = Horizontal Multiplier</li>
+<li>VM = Vertical Multiplier</li>
+<li>DM = Distance Multiplier</li>
+<li>AM = Asymmetry Multiplier</li>
+<li>FM = Frequency Multiplier</li>
+<li>CM = Coupling Multiplier</li>
+</ul>
+
+<h3>5.4 Calculation of Each Multiplier</h3>
+
+<p><strong>1. Load Constant</strong></p>
+<div class="formula">LC = 23 kg</div>
+
+<p><strong>2. Horizontal Multiplier</strong></p>
+<div class="formula">HM = 25 / H = 25 / 40 = 0.625</div>
+
+<p><strong>3. Vertical Multiplier</strong></p>
+<div class="formula">
+VM = 1 − 0.003 × |V − 75|<br>
+VM = 1 − 0.003 × |50 − 75| = 0.925
+</div>
+
+<p><strong>4. Distance Multiplier</strong></p>
+<div class="formula">
+DM = 0.82 + 4.5 / D<br>
+DM = 0.82 + 4.5 / 50 = 0.91
+</div>
+
+<p><strong>5. Asymmetry Multiplier</strong></p>
+<div class="formula">
+AM = 1 − 0.0032 × A<br>
+AM = 1 − 0.0032 × 30 = 0.904
+</div>
+
+<p><strong>6. Frequency Multiplier</strong></p>
+<p>For the assumed lifting frequency and duration, the working example uses:</p>
+<div class="formula">FM = 0.94</div>
+
+<p><strong>7. Coupling Multiplier</strong></p>
+<div class="formula">CM = 1.00</div>
+
+<h3>5.5 Recommended Weight Limit Calculation</h3>
+
+<div class="formula">
+RWL = 23 × 0.625 × 0.925 × 0.91 × 0.904 × 0.94 × 1.00
+</div>
+
+<div class="formula">RWL ≈ 10.28 kg</div>
+
+<p>This is the illustrative recommended weight limit calculated for the origin of the lift.</p>
+
+<h3>5.6 Lifting Index Calculation</h3>
+
+<div class="formula">
+LI = Actual Load Weight / RWL<br>
+LI = 12 / 10.28 ≈ 1.17
+</div>
+
+<h3>5.7 Interpretation of Results</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Lifting Index</th><th>General Interpretation</th></tr>
+<tr><td>LI ≤ 1.0</td><td>Within the calculated recommended weight limit</td></tr>
+<tr><td>LI &gt; 1.0</td><td>Increased concern; improvements should be considered</td></tr>
+<tr><td>LI &gt; 3.0</td><td>Substantially elevated lifting demands</td></tr>
+</table>
+</div>
+
+<p><strong>Result: LI ≈ 1.17.</strong></p>
+
+<p>The carton is heavier than the recommended weight limit under the assumed conditions, suggesting a need to improve the lifting task.</p>
+
+<h3>5.8 Proposed Ergonomic Improvements</h3>
+<ol>
+<li>Reduce carton weight from 12 kg to approximately 8 kg.</li>
+<li>Reduce horizontal reach from 40 cm to 25 cm.</li>
+<li>Increase initial lifting height from 50 cm to 75 cm.</li>
+<li>Reduce vertical travel using adjustable platforms.</li>
+<li>Eliminate unnecessary twisting.</li>
+<li>Provide suitable handholds and mechanical lifting assistance when needed.</li>
+</ol>
+
+<h3>5.9 Proposed Lifting Task Reassessment</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Variable</th><th>Improved Value</th></tr>
+<tr><td>Carton weight</td><td>8 kg</td></tr>
+<tr><td>Horizontal distance</td><td>25 cm</td></tr>
+<tr><td>Initial vertical height</td><td>75 cm</td></tr>
+<tr><td>Vertical travel distance</td><td>25 cm</td></tr>
+<tr><td>Asymmetry angle</td><td>0°</td></tr>
+<tr><td>Lifting frequency</td><td>1 lift/minute</td></tr>
+<tr><td>Task duration</td><td>1 hour</td></tr>
+<tr><td>Coupling quality</td><td>Good</td></tr>
+</table>
+</div>
+
+<p>Proposed multipliers:</p>
+
+<ul>
+<li>HM = 1.00</li>
+<li>VM = 1.00</li>
+<li>DM = 1.00</li>
+<li>AM = 1.00</li>
+<li>FM = 0.94</li>
+<li>CM = 1.00</li>
+</ul>
+
+<div class="formula">
+Improved RWL = 23 × 1 × 1 × 1 × 1 × 0.94 × 1 = 21.62 kg
+</div>
+
+<div class="formula">
+Improved LI = 8 / 21.62 ≈ 0.37
+</div>
+
+<h3>5.10 Before-and-After Comparison</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Measurement</th><th>Original Task</th><th>Improved Task</th></tr>
+<tr><td>Carton weight</td><td>12 kg</td><td>8 kg</td></tr>
+<tr><td>Horizontal reach</td><td>40 cm</td><td>25 cm</td></tr>
+<tr><td>Initial lifting height</td><td>50 cm</td><td>75 cm</td></tr>
+<tr><td>Twisting angle</td><td>30°</td><td>0°</td></tr>
+<tr><td>Recommended Weight Limit</td><td>10.28 kg</td><td>21.62 kg</td></tr>
+<tr><td>Lifting Index</td><td>1.17</td><td>0.37</td></tr>
+</table>
+</div>
+
+<div class="formula">
+LI reduction = [(1.17 − 0.37) / 1.17] × 100 ≈ 68.4%
+</div>
+
+<p>The lower calculated lifting index indicates a more favorable lifting scenario. It does not mean the probability of injury decreases by 68.4%.</p>
+
+<h3>5.11 Limitations of the Analysis</h3>
+
+<p>The calculations use hypothetical measurements. A real assessment requires direct measurements, verified frequency and coupling multipliers, and analysis of lifting geometry at both the origin and destination.</p>
+
+<p>The RNLE does not apply to every type of manual handling, such as one-handed lifting, carrying, pushing, or pulling.</p>
+
+<p>The more restrictive lifting condition should determine the final recommended weight limit.</p>
+
+<h3>5.12 Conclusion</h3>
+
+<p>The NIOSH analysis indicates that the original packaging task may create unnecessary lower-back loading due to carton weight, horizontal reach, and twisting.</p>
+
+<p>Reducing carton weight, improving workstation height, eliminating twisting, and moving materials closer to the worker can improve ergonomic conditions.</p>
+
+<p>The illustrative Lifting Index decreases from 1.17 to 0.37, subject to verification of the full lifting task.</p>
+
+<figure class="figure">
+<img src="figure4.jpeg" alt="NIOSH lifting analysis">
+<figcaption>Figure 4. NIOSH lifting analysis and packaging workstation improvements (illustrative).</figcaption>
+</figure>
+</section>
+
+<!-- SECTION 6 -->
+<section class="section">
+<h2>6. Overall Results and Engineering Recommendations</h2>
+
+<h3>6.1 Summary of Findings</h3>
+
+<p>Four complementary methods were applied to BetterUse Engineering's hair dryer and manufacturing and packaging operations.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Assessment</th><th>Original Estimate</th><th>Proposed Estimate</th></tr>
+<tr><td>DFMEA: Wrist positioning</td><td>RPN 252</td><td>RPN 42</td></tr>
+<tr><td>PFMEA: Quality inspection</td><td>RPN 315</td><td>RPN 36</td></tr>
+<tr><td>REBA: Hair dryer use</td><td>Score 4 (Medium)</td><td>Score 1 (Negligible)</td></tr>
+<tr><td>NIOSH: Packaging lift</td><td>LI ≈ 1.17</td><td>LI ≈ 0.37</td></tr>
+</table>
+</div>
+
+<h3>6.2 Prioritized Engineering Actions</h3>
+
+<ol>
+<li><strong>Electrical safety:</strong> Implement connector identification, wiring checks, and electrical safety testing. The wiring failure has a severity rating of 10.</li>
+<li><strong>Inspection and process control:</strong> Standardize inspection criteria, record test results, and improve defect feedback.</li>
+<li><strong>User ergonomics:</strong> Reduce hair dryer weight, improve handle geometry, and provide an adjustable stand.</li>
+<li><strong>Packaging ergonomics:</strong> Reduce carton weight, improve reach distances, minimize vertical travel, and eliminate twisting.</li>
+</ol>
+
+<h3>6.3 Repeatable Engineering Risk-Assessment Procedure</h3>
+
+<ol>
+<li>Define the product or task, intended users, and potential failure modes.</li>
+<li>Record assumptions and measure relevant inputs such as weight, angles, lifting distances, frequency, and duration.</li>
+<li>Assign severity, occurrence, and detection ratings. Calculate RPN = S × O × D and separately flag high-severity safety hazards.</li>
+<li>For posture-related tasks, apply REBA and document Group A, Group B, Table C, and activity adjustments.</li>
+<li>For qualifying two-handed lifts, calculate NIOSH multipliers at the origin and destination. Use the limiting RWL to calculate the Lifting Index.</li>
+<li>Select engineering controls and establish measurable improvement targets.</li>
+<li>Repeat the assessment after changes and document the remaining risks.</li>
+</ol>
+
+<h3>6.4 Interpretation and Validation</h3>
+
+<p>The proposed RPN changes are scenario estimates, not demonstrated changes in failure rates. REBA scores are ordinal screening values, and NIOSH lifting indices indicate relative task demands rather than individual injury probability.</p>
+
+<p>Before implementation, verify REBA table lookups, NIOSH frequency and coupling multipliers, lifting geometry at the origin and destination, and actual workplace observations.</p>
+</section>
+
+<!-- SECTION 7 -->
+<section class="section">
+<h2>7. Final Conclusion</h2>
+
+<p>This project demonstrates how industrial engineering connects product design, manufacturing quality, and worker ergonomics.</p>
+
+<p>The DFMEA identifies wrist positioning, excessive product weight, and lack of stable hands-free support as design concerns. The PFMEA identifies quality inspection and high-severity electrical wiring hazards as priorities for process controls.</p>
+
+<p>The REBA example highlights raised-arm and wrist postures during styling. The NIOSH example highlights reaching, twisting, and carton weight during packaging.</p>
+
+<p>BetterUse Engineering should prioritize electrical safety, improve hair dryer handle and support options, standardize inspections, and redesign material-handling stations.</p>
+
+<p>The numerical before-and-after estimates provide a foundation for engineering planning but require physical testing, observation, and completed assessment worksheets before being reported as actual risk reductions.</p>
+</section>
+
+<!-- SECTION 8 -->
+<section class="section">
+<h2>8. References</h2>
+
+<ol>
+<li>Hignett, S., &amp; McAtamney, L. (2000). Rapid Entire Body Assessment (REBA). <em>Applied Ergonomics, 31</em>(2), 201–205.</li>
+
+<li>Cornell University Ergonomics Web. Rapid Entire Body Assessment (REBA) worksheet.
+<a href="https://ergo.human.cornell.edu/ahREBA.html" target="_blank" rel="noopener noreferrer">Cornell REBA Worksheet</a>.</li>
+
+<li>National Institute for Occupational Safety and Health. <em>Applications Manual for the Revised NIOSH Lifting Equation.</em>
+<a href="https://doi.org/10.26616/NIOSHPUB94110revised092021" target="_blank" rel="noopener noreferrer">NIOSH Manual</a>.</li>
+
+<li>Centers for Disease Control and Prevention. Revised NIOSH Lifting Equation.
+<a href="https://www.cdc.gov/niosh/ergonomics/about/rnle.html" target="_blank" rel="noopener noreferrer">CDC NIOSH Resource</a>.</li>
+
+<li>Automotive Industry Action Group (AIAG) &amp; Verband der Automobilindustrie (VDA). (2019). <em>FMEA Handbook: Failure Mode and Effects Analysis.</em> First edition.</li>
+</ol>
+</section>
+
+<div class="footer">
+♡ ✦ 🎀 ✦ ♡
+<br>
+IE 355 — Assignment 4 | BetterUse Engineering
+<br>
+The Art of Ergonomic Design
+</div>
+
+<a class="back-button" href="index.html">♡ Back to Assignments</a>
+
+</div>
+</div>
+</body>
+</html>
+
