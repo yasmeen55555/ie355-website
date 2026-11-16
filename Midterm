@@ -1,0 +1,793 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IE 355 Midterm | BetterUse Engineering</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    background: linear-gradient(135deg, #fff7fa 0%, #ffeef5 50%, #fff8fb 100%);
+    font-family: Arial, sans-serif;
+    color: #624c55;
+    margin: 0;
+    padding: 40px 20px;
+    line-height: 1.75;
+}
+
+.container {
+    position: relative;
+    max-width: 1100px;
+    margin: auto;
+    padding: 45px;
+    background: linear-gradient(145deg, #fff0f5, #ffdce8, #fff0f5);
+    border: 3px solid #f3a0bd;
+    outline: 7px solid #ffe0eb;
+    outline-offset: 5px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(232,93,145,.18);
+    overflow: hidden;
+}
+
+.content { position: relative; z-index: 2; }
+
+h1, h2, h3 { color: #b76e79; }
+h1 { text-align: center; font-size: 34px; }
+.subtitle, .company { text-align: center; }
+.company { font-weight: bold; color: #b76e79; font-size: 21px; }
+
+.top-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 30px;
+}
+
+.main-bow {
+    font-size: 65px;
+    animation: bowFloat 2.5s ease-in-out infinite;
+}
+.small-bow {
+    font-size: 38px;
+    animation: bowFloat 3s ease-in-out infinite;
+}
+.heart {
+    color: #e85d91;
+    animation: heartbeat 1.7s infinite;
+}
+@keyframes bowFloat {
+    50% { transform: translateY(-8px); }
+}
+@keyframes heartbeat {
+    50% { transform: scale(1.2); }
+}
+
+.floating-decor {
+    position: absolute;
+    color: #ee7faa;
+    font-size: 25px;
+    opacity: .6;
+    pointer-events: none;
+    animation: floatAround 5s ease-in-out infinite;
+}
+@keyframes floatAround {
+    0%,100% { transform: translate(0,0); }
+    50% { transform: translate(10px,-25px) rotate(10deg); }
+}
+
+.celebration {
+    position: absolute;
+    top: -50px;
+    font-size: 22px;
+    color: #e85d91;
+    opacity: .65;
+    pointer-events: none;
+    animation: falling 9s linear infinite;
+}
+@keyframes falling {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+    15% { opacity: .7; }
+    100% { transform: translateY(7000px) rotate(360deg); opacity: 0; }
+}
+.big-heart {
+    position: absolute;
+    font-size: 220px;
+    color: #f4a9c4;
+    opacity: .13;
+    pointer-events: none;
+}
+.left-heart { left: 2%; top: 20%; }
+.right-heart { right: 2%; top: 55%; }
+
+.back-button {
+    display: inline-block;
+    background: #f7d6df;
+    color: #6d4c55;
+    text-decoration: none;
+    padding: 12px 22px;
+    border: 2px solid #f3a0bd;
+    border-radius: 12px;
+    font-weight: bold;
+}
+.back-button:hover { background: #efbdca; }
+
+.section {
+    background: rgba(255,255,255,.8);
+    padding: 28px;
+    margin: 28px 0;
+    border: 2px solid #f3a0bd;
+    border-radius: 20px;
+    box-shadow: 0 5px 18px rgba(232,93,145,.1);
+}
+.section h2 {
+    border-bottom: 2px solid #f3a0bd;
+    padding-bottom: 10px;
+}
+h3 { margin-top: 25px; }
+
+.question {
+    background: #fffafc;
+    border: 1px solid #f3bfd0;
+    border-radius: 15px;
+    padding: 22px;
+    margin: 22px 0;
+}
+.question h3 { margin-top: 0; }
+
+.formula {
+    background: #fff0f6;
+    border-left: 5px solid #e85d91;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    font-size: 14px;
+}
+th { background: #e9a7bd; color: #593e48; }
+th, td {
+    border: 1px solid #e8afc1;
+    padding: 10px;
+    text-align: left;
+}
+tr:nth-child(even) { background: #fff2f7; }
+.table-wrap { overflow-x: auto; }
+
+.note {
+    background: #fff7d9;
+    padding: 14px;
+    border-radius: 10px;
+    border-left: 4px solid #d6ae57;
+}
+a { color: #b44778; }
+li { margin-bottom: 9px; }
+
+.toc a {
+    display: inline-block;
+    margin: 5px;
+    padding: 7px 12px;
+    background: #ffe4ef;
+    border-radius: 9px;
+    text-decoration: none;
+}
+
+.picture-slot {
+    border: 2px dashed #e9a7bd;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    color: #a56a81;
+    background: #fff9fc;
+    margin: 22px 0;
+}
+
+.footer { text-align: center; color: #a56a81; padding: 20px; }
+
+@media(max-width:650px) {
+    .container { padding: 18px; }
+    .section { padding: 16px; }
+    .question { padding: 14px; }
+    h1 { font-size: 25px; }
+    .top-decoration { gap: 6px; }
+    .main-bow { font-size: 42px; }
+    .small-bow { font-size: 25px; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<!-- FLOATING DECORATIONS -->
+<span class="celebration" style="left:8%;animation-delay:0s">♡</span>
+<span class="celebration" style="left:18%;animation-delay:2s">✦</span>
+<span class="celebration" style="left:29%;animation-delay:4s">♥</span>
+<span class="celebration" style="left:40%;animation-delay:1s">✧</span>
+<span class="celebration" style="left:52%;animation-delay:3s">♡</span>
+<span class="celebration" style="left:63%;animation-delay:5s">✦</span>
+<span class="celebration" style="left:74%;animation-delay:2.5s">♥</span>
+<span class="celebration" style="left:85%;animation-delay:4.5s">♡</span>
+<span class="celebration" style="left:94%;animation-delay:1.5s">✧</span>
+
+<div class="big-heart left-heart">♡</div>
+<div class="big-heart right-heart">♡</div>
+
+<span class="floating-decor" style="left:5%;top:12%">♡</span>
+<span class="floating-decor" style="left:12%;top:55%">✦</span>
+<span class="floating-decor" style="left:20%;top:78%">♥</span>
+<span class="floating-decor" style="left:31%;top:35%">♡</span>
+<span class="floating-decor" style="left:42%;top:72%">✧</span>
+<span class="floating-decor" style="left:57%;top:20%">♥</span>
+<span class="floating-decor" style="left:68%;top:65%">♡</span>
+<span class="floating-decor" style="left:78%;top:38%">✦</span>
+<span class="floating-decor" style="left:88%;top:75%">♡</span>
+<span class="floating-decor" style="left:94%;top:18%">✧</span>
+
+<div class="content">
+
+<a class="back-button" href="index.html">♡ Back to Assignments</a>
+
+<div class="top-decoration">
+    <span class="heart">♡</span>
+    <span class="small-bow">🎀</span>
+    <span class="heart">♥</span>
+    <span class="main-bow">🎀</span>
+    <span class="heart">♡</span>
+    <span class="small-bow">🎀</span>
+    <span class="heart">♥</span>
+</div>
+
+<h1>IE 355 Midterm Assignment</h1>
+<p class="subtitle">Human Factors Engineering</p>
+<p class="company">BetterUse Engineering</p>
+<p class="subtitle">Ergonomic Design and Application Analysis of a Handheld Hair Dryer</p>
+<p class="subtitle">November 16, 2026</p>
+
+<div class="note">
+<strong>Engineering Data Note:</strong>
+All example measurements, performance comparisons, and design targets
+are illustrative. No physical testing is claimed. Actual design
+performance must be confirmed through controlled experiments.
+</div>
+
+<section class="section toc">
+<h2>Project Contents</h2>
+<a href="#intro">Introduction</a>
+<a href="#objectives">Objectives</a>
+<a href="#approach">Engineering Approach</a>
+<a href="#questions">20 Questions</a>
+<a href="#recommendations">Recommendations</a>
+<a href="#validation">Validation</a>
+<a href="#conclusion">Conclusion</a>
+<a href="#references">References</a>
+</section>
+
+<section class="section" id="intro">
+<h2>1. Introduction</h2>
+<p>For this midterm assignment, I selected a handheld hair dryer as my product for Human Factors Engineering (HFE) analysis. This is the same product I have been studying in my previous assignments for BetterUse Engineering.</p>
+<p>Hair dryers are commonly used for drying and styling hair. However, some designs can cause discomfort, especially when users hold them for a long time. Common ergonomic problems include heavy weight, uncomfortable handles, loud noise, difficult button placement, and arm fatigue.</p>
+<p>As the HFE engineer at BetterUse Engineering, my goal is to identify these problems and recommend practical design improvements that make the hair dryer safer, more comfortable, and easier to use.</p>
+<p>This study uses a questionnaire with 20 ergonomic questions to evaluate the hair dryer's design, usability, safety, and physical demands. Each question includes an engineering explanation and a recommended improvement.</p>
+</section>
+
+<section class="section" id="objectives">
+<h2>2. Project Objectives</h2>
+<ol>
+<li>Identify ergonomic problems in a handheld hair dryer.</li>
+<li>Evaluate the effects of weight, grip, noise, and heat on users.</li>
+<li>Analyze how the product affects the hand, wrist, arm, and shoulder.</li>
+<li>Improve handle design and button placement.</li>
+<li>Explore ways to make one-handed styling easier.</li>
+<li>Recommend a hands-free stand to reduce physical effort.</li>
+<li>Apply engineering calculations and human-centered design principles.</li>
+<li>Develop a safer, more comfortable, user-friendly hair dryer.</li>
+</ol>
+</section>
+
+<section class="section" id="approach">
+<h2>3. Engineering Approach</h2>
+<p>The project uses Human Factors Engineering (HFE) and Human-Centered Design (HCD) principles.</p>
+<ul>
+<li><strong>Physical ergonomics:</strong> Weight, grip, wrist position, and muscle fatigue.</li>
+<li><strong>Usability:</strong> Button accessibility, ease of operation, and one-handed use.</li>
+<li><strong>Environmental factors:</strong> Noise, heat, and airflow.</li>
+<li><strong>Safety:</strong> Overheating protection, electrical safety, and stable placement.</li>
+<li><strong>Engineering improvements:</strong> Weight reduction, handle design, noise control, and hands-free support.</li>
+</ul>
+<p>Proposed values are engineering assumptions rather than measured results.</p>
+</section>
+
+<section class="section" id="questions">
+<h2>4. HFE Ergonomic Questionnaire and Engineering Analysis</h2>
+
+<h2>Section A: Weight, Posture, and Physical Comfort</h2>
+
+<div class="question">
+<h3>Question 1: Is the hair dryer lightweight enough to prevent arm and shoulder fatigue during extended use?</h3>
+<p><strong>Answer:</strong> A heavy hair dryer can cause arm and shoulder fatigue, especially when users hold it above their heads for several minutes. A lighter design reduces the force that users must support.</p>
+<p><strong>Engineering Analysis:</strong> Gravitational force is calculated using:</p>
+<div class="formula">F = m × g</div>
+<p>Where F is force in newtons, m is mass in kilograms, and g = 9.81 m/s².</p>
+<div class="formula">
+Existing: F = 0.80 × 9.81 = 7.85 N<br>
+Improved: F = 0.55 × 9.81 = 5.40 N<br>
+Weight reduction = [(0.80 − 0.55) / 0.80] × 100 = 31.25%
+</div>
+<p><strong>Recommended Improvement:</strong> Use lightweight housing materials and a smaller, efficient motor.</p>
+<p><strong>Expected Benefit:</strong> The lower gravitational force may reduce arm and shoulder fatigue during extended use.</p>
+<p><strong>Note:</strong> The masses are example design assumptions, not measured values.</p>
+</div>
+
+<div class="question">
+<h3>Question 2: How does the weight distribution affect wrist strain and user comfort?</h3>
+<p><strong>Answer:</strong> Weight distribution affects the effort required to keep the hair dryer balanced. When the center of mass is far from the wrist, the wrist must resist greater torque.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">τ = F × d</div>
+<p>Where τ is wrist torque, F is gravitational force, and d is the perpendicular distance from the center of mass to the wrist's rotation axis.</p>
+<div class="formula">
+Existing: τ = 7.85 × 0.12 = 0.942 N·m<br>
+Improved: τ = 5.40 × 0.07 = 0.378 N·m<br>
+Torque reduction = [(0.942 − 0.378) / 0.942] × 100 = 59.9%
+</div>
+<p><strong>Recommended Improvement:</strong> Move heavier components closer to the handle.</p>
+<p><strong>Expected Benefit:</strong> Approximately 60% less gravitational wrist torque under the assumed conditions.</p>
+<p><strong>Evaluation:</strong> Measure wrist torque and compare user comfort during identical tasks.</p>
+</div>
+
+<div class="question">
+<h3>Question 3: Does the hair dryer allow users to maintain a natural wrist position?</h3>
+<p><strong>Answer:</strong> A comfortable hair dryer should allow the wrist to remain close to a neutral position. Excessive bending can increase discomfort.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+Existing wrist deviation = 30°<br>
+Proposed wrist deviation = 10°<br>
+Reduction = [(30 − 10) / 30] × 100 = 66.7%
+</div>
+<p>This is a reduction in wrist angle, not necessarily an equal reduction in injury risk.</p>
+<p><strong>Recommended Improvement:</strong> Improve the handle angle and add an adjustable airflow nozzle.</p>
+<p><strong>Evaluation:</strong> Measure wrist angles while users dry the top, sides, and back of their hair.</p>
+</div>
+
+<div class="question">
+<h3>Question 4: Can users comfortably operate the hair dryer for 10–15 minutes without excessive muscle fatigue?</h3>
+<p><strong>Answer:</strong> Holding a hair dryer for a long time creates continuous loading on the arm and shoulder.</p>
+<p><strong>Engineering Analysis:</strong> A simplified force-time exposure calculation is:</p>
+<div class="formula">E = F × t</div>
+<p>For a 15-minute session, t = 900 seconds.</p>
+<div class="formula">
+Existing: E = 7.85 × 900 = 7,065 N·s<br>
+Improved: E = 5.40 × 900 = 4,860 N·s<br>
+Reduction = [(7,065 − 4,860) / 7,065] × 100 = 31.2%
+</div>
+<p>This measures cumulative external force exposure, not muscle fatigue directly.</p>
+<p><strong>Recommended Improvement:</strong> Reduce weight, improve balance, and add an adjustable hands-free stand.</p>
+<p><strong>Evaluation:</strong> Record arm discomfort, wrist posture, handheld duration, rest breaks, and comfort ratings.</p>
+</div>
+
+<div class="picture-slot">🎀 Figure 1 — Weight Distribution and Wrist Torque (Picture to be added)</div>
+
+<h3>Section A: Engineering Summary</h3>
+<p>Reducing mass from 0.80 kg to 0.55 kg, moving the center of mass closer to the wrist, improving handle geometry, and adding hands-free support may reduce physical effort. Actual user testing is required to verify the improvements.</p>
+
+<h2>Section B: Handle and Grip Design</h2>
+
+<div class="question">
+<h3>Question 5: Is the handle comfortable for different hand sizes?</h3>
+<p><strong>Answer:</strong> A handle that is too large or too small may require extra gripping force and increase hand fatigue.</p>
+<p><strong>Engineering Analysis:</strong> Compare proposed handle diameters of 30 mm, 35 mm, and 40 mm.</p>
+<div class="formula">
+C = π × D<br>
+For D = 35 mm:<br>
+C = 3.1416 × 35 = 109.96 mm ≈ 110 mm
+</div>
+<p><strong>Recommended Improvement:</strong> Start with a rounded 35 mm handle and test alternative sizes with users.</p>
+<p><strong>Evaluation:</strong> Have users hold each handle for five minutes and rate comfort from 0 to 10.</p>
+<p><strong>Note:</strong> The dimensions are proposed design assumptions.</p>
+</div>
+
+<div class="question">
+<h3>Question 6: Does the handle material prevent slipping?</h3>
+<p><strong>Answer:</strong> A smooth handle may become slippery when hands are damp or styling products are present. A textured surface can improve grip security.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+Ff = μ × N<br>
+Assumed gripping force N = 20 N<br>
+Smooth plastic: 0.30 × 20 = 6 N<br>
+Textured rubber: 0.60 × 20 = 12 N<br>
+Increase in available friction = 100%
+</div>
+<p><strong>Recommended Improvement:</strong> Add a textured, easy-to-clean grip.</p>
+<p><strong>Evaluation:</strong> Compare slip resistance under dry and slightly damp test conditions.</p>
+<p><strong>Safety Note:</strong> The dryer must not be operated with wet hands. The friction coefficients are illustrative.</p>
+</div>
+
+<div class="question">
+<h3>Question 7: Can the handle shape reduce pressure on the fingers, palm, and wrist?</h3>
+<p><strong>Answer:</strong> An uncomfortable handle can concentrate pressure on the hand and create awkward wrist positions.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+P = F / A<br>
+Assumed force = 20 N<br>
+Existing: 20 / 0.002 = 10,000 Pa<br>
+Improved: 20 / 0.003 = 6,667 Pa<br>
+Average pressure reduction = 33.3%
+</div>
+<p><strong>Recommended Improvement:</strong> Use rounded edges, a slightly curved handle, and a larger comfortable contact area.</p>
+<p><strong>Evaluation:</strong> Compare grip pressure and wrist angles.</p>
+<p><strong>Note:</strong> Real pressure distribution is uneven and requires physical testing.</p>
+</div>
+
+<div class="question">
+<h3>Question 8: Is the hair dryer accessible to left-handed and right-handed users?</h3>
+<p><strong>Answer:</strong> Controls should be equally comfortable for users operating the dryer with either hand.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+Example right-handed operation = 2 seconds<br>
+Example left-handed operation = 3 seconds<br>
+Difference = [(3 − 2) / 2] × 100 = 50%
+</div>
+<p><strong>Recommended Improvement:</strong> Use a symmetrical handle and controls accessible from either hand.</p>
+<p><strong>Evaluation:</strong> Measure completion time, errors, grip changes, and comfort for left-handed and right-handed participants.</p>
+<p><strong>Note:</strong> The operation times are hypothetical.</p>
+</div>
+
+<div class="picture-slot">🎀 Figure 2 — Existing and Improved Handle Design (Picture to be added)</div>
+
+<h3>Section B: Engineering Summary</h3>
+<p>The proposed handle uses a 35 mm initial diameter target, textured grip, rounded edges, larger contact area, and accessible controls. These changes may improve comfort and control, subject to user testing.</p>
+
+<h2>Section C: Buttons and User Interface</h2>
+
+<div class="question">
+<h3>Question 9: Are the power, temperature, and airflow buttons easy to reach?</h3>
+<p><strong>Answer:</strong> Buttons positioned too far from the thumb may require grip changes or uncomfortable wrist movement.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+Existing thumb travel = 60 mm<br>
+Improved thumb travel = 30 mm<br>
+Reduction = [(60 − 30) / 60] × 100 = 50%
+</div>
+<p><strong>Recommended Improvement:</strong> Position controls near the natural thumb location and use slightly raised buttons.</p>
+<p><strong>Evaluation:</strong> Record thumb travel, grip changes, and task completion time.</p>
+</div>
+
+<div class="question">
+<h3>Question 10: Are buttons and settings clearly labeled?</h3>
+<p><strong>Answer:</strong> Clear labels and tactile feedback help users understand the controls and reduce selection errors.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+Error Rate = (Incorrect Actions / Total Actions) × 100<br>
+Existing: (8 / 50) × 100 = 16%<br>
+Improved: (2 / 50) × 100 = 4%<br>
+Error-rate reduction = 75%
+</div>
+<p><strong>Recommended Improvement:</strong> Use clear ON/OFF, Low/Medium/High temperature, and Low/High airflow labels, raised symbols, and indicator lights.</p>
+<p><strong>Evaluation:</strong> Ask users to select settings without assistance and record errors.</p>
+<p><strong>Note:</strong> Error counts are hypothetical examples.</p>
+</div>
+
+<div class="question">
+<h3>Question 11: Can users safely change settings with one hand?</h3>
+<p><strong>Answer:</strong> Users should be able to adjust airflow and temperature without releasing their grip.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+Existing adjustment time = 4 seconds<br>
+Improved adjustment time = 2 seconds<br>
+Time reduction = 50%<br><br>
+Success Rate = (Successful Tasks / Total Tasks) × 100<br>
+Existing = (14 / 20) × 100 = 70%<br>
+Improved = (19 / 20) × 100 = 95%
+</div>
+<p><strong>Recommended Improvement:</strong> Provide reachable tactile buttons or sliding switches with separate temperature and airflow controls.</p>
+<p><strong>Evaluation:</strong> Measure adjustment time, success rate, accidental presses, and grip changes.</p>
+<p><strong>Note:</strong> These are hypothetical results.</p>
+</div>
+
+<div class="picture-slot">🎀 Figure 3 — Existing and Improved Button Layout (Picture to be added)</div>
+
+<h3>Section C: Engineering Summary</h3>
+<p>BetterUse Engineering recommends controls positioned close to the thumb, clear labels, tactile feedback, indicator lights, and one-handed operation. Testing should confirm whether these changes reduce errors.</p>
+
+<h2>Section D: Noise, Heat, and Safety</h2>
+
+<div class="question">
+<h3>Question 12: Does the hair dryer produce uncomfortable noise?</h3>
+<p><strong>Answer:</strong> Hair dryer motors and high-speed fans can produce loud noise that may cause discomfort during regular use.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+I₂ / I₁ = 10^((L₂ − L₁) / 10)<br>
+Existing = 85 dB<br>
+Proposed = 75 dB<br>
+I₂ / I₁ = 10^((75 − 85) / 10) = 0.10
+</div>
+<p>The proposed 10 dB reduction corresponds to 90% lower sound intensity under comparable conditions. This is not the same as a 90% reduction in perceived loudness.</p>
+<p><strong>Recommended Improvement:</strong> Use a quieter motor, improved fan blades, reduced vibration, and optimized airflow.</p>
+<p><strong>Evaluation:</strong> Measure A-weighted sound levels at the same distance and settings.</p>
+<p><strong>Note:</strong> Both sound levels are illustrative assumptions.</p>
+</div>
+
+<div class="question">
+<h3>Question 13: Does the outer surface remain at a comfortable temperature?</h3>
+<p><strong>Answer:</strong> Excessive housing or handle temperature may cause discomfort or burns.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+ΔT = T₂ − T₁<br>
+Room temperature = 25°C<br>
+Existing rise = 48 − 25 = 23°C<br>
+Improved rise = 35 − 25 = 10°C<br>
+Reduction in temperature rise = [(23 − 10) / 23] × 100 = 56.5%
+</div>
+<p><strong>Recommended Improvement:</strong> Improve insulation, housing materials, and internal airflow.</p>
+<p><strong>Evaluation:</strong> Measure surface temperatures after 5, 10, and 15 minutes.</p>
+<p><strong>Note:</strong> Safe touch temperature depends on material, duration, and applicable safety standards.</p>
+</div>
+
+<div class="question">
+<h3>Question 14: Does the hair dryer protect against overheating and burns?</h3>
+<p><strong>Answer:</strong> The product should disconnect heating power if unsafe temperatures occur.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+P = V × I<br>
+P = 120 × 12 = 1,440 W<br>
+t = 10 × 60 = 600 seconds<br>
+E = P × t = 1,440 × 600 = 864,000 J = 864 kJ
+</div>
+<p>This is electrical energy consumed under the constant-power assumption, not heat absorbed by the housing.</p>
+<p><strong>Recommended Improvement:</strong> Add a temperature sensor, automatic thermal cutoff, and independent thermal fuse.</p>
+<p><strong>Evaluation:</strong> Conduct controlled abnormal-operation and blocked-airflow tests using appropriate laboratory safety equipment.</p>
+<p><strong>Safety Note:</strong> Shutdown thresholds must be determined using applicable safety standards and testing.</p>
+</div>
+
+<div class="question">
+<h3>Question 15: Is the air intake designed to reduce hair entanglement?</h3>
+<p><strong>Answer:</strong> Loose hair may be pulled toward the fan if the intake is too close to the user's hair.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+v = Q / A<br>
+Assumed airflow Q = 0.020 m³/s<br>
+Existing: 0.020 / 0.002 = 10 m/s<br>
+Improved: 0.020 / 0.004 = 5 m/s<br>
+Average velocity reduction = 50%
+</div>
+<p><strong>Recommended Improvement:</strong> Increase effective intake area, add a protective mesh, and position the intake away from loose hair.</p>
+<p><strong>Evaluation:</strong> Measure airflow and conduct controlled entanglement-resistance testing with suitable test materials.</p>
+<p><strong>Note:</strong> The calculation assumes constant airflow and does not directly predict entanglement risk.</p>
+</div>
+
+<div class="picture-slot">🎀 Figure 4 — Thermal Sensor, Protective Mesh, and Insulated Handle (Picture to be added)</div>
+
+<h3>Section D: Engineering Summary</h3>
+<p>The improved hair dryer should use quieter motor and fan technology, better insulation, thermal protection, and a protective intake mesh. Physical testing and electrical safety evaluation are necessary.</p>
+
+<h2>Section E: Usability and Human-Centered Design</h2>
+
+<div class="question">
+<h3>Question 16: Can users with different physical abilities operate the hair dryer?</h3>
+<p><strong>Answer:</strong> A lightweight hair dryer with easy-to-reach controls may improve accessibility for users with different hand sizes and grip strengths.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+Existing required grip force = 30 N<br>
+Improved required grip force = 18 N<br>
+Reduction = [(30 − 18) / 30] × 100 = 40%
+</div>
+<p><strong>Recommended Improvement:</strong> Use a lightweight design, textured handle, large controls, and optional hands-free stand.</p>
+<p><strong>Evaluation:</strong> Measure grip force, completion time, and comfort among users with different abilities.</p>
+<p><strong>Note:</strong> Grip-force values are illustrative.</p>
+</div>
+
+<div class="question">
+<h3>Question 17: Does the power cord allow comfortable movement?</h3>
+<p><strong>Answer:</strong> A short or stiff cord may restrict movement and force awkward body positions.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+L = D + S<br>
+L = 1.5 + 0.5 = 2.0 meters
+</div>
+<p>D is the outlet distance and S is additional movement allowance.</p>
+<p><strong>Recommended Improvement:</strong> Use a flexible 2.0-meter cord with proper strain relief.</p>
+<p><strong>Evaluation:</strong> Check whether users can dry the front, sides, and back of their hair without pulling the cord.</p>
+<p><strong>Safety Note:</strong> Longer cords may increase tangling and trip hazards.</p>
+</div>
+
+<div class="question">
+<h3>Question 18: Can a hands-free stand reduce arm fatigue?</h3>
+<p><strong>Answer:</strong> A stand allows users to position the hair dryer without holding it continuously and may free both hands for styling.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+Existing handheld time = 15 minutes<br>
+With stand = 5 minutes<br>
+Reduction = [(15 − 5) / 15] × 100 = 66.7%<br><br>
+F = 0.55 × 9.81 = 5.40 N<br>
+Without stand: E = 5.40 × 900 = 4,860 N·s<br>
+With stand: E = 5.40 × 300 = 1,620 N·s
+</div>
+<p><strong>Recommended Improvement:</strong> Design an adjustable stand with a stable base, secure holder, and adjustable height and angle.</p>
+<p><strong>Evaluation:</strong> Compare discomfort, handheld time, stability, heat exposure, and airflow direction.</p>
+<p><strong>Note:</strong> Force-time exposure is not a direct measure of muscle fatigue.</p>
+</div>
+
+<div class="question">
+<h3>Question 19: Is the hair dryer easy to clean, maintain, and store?</h3>
+<p><strong>Answer:</strong> Dust and hair may collect around the air intake, making maintenance more difficult and potentially restricting airflow.</p>
+<p><strong>Engineering Analysis:</strong></p>
+<div class="formula">
+Existing cleaning time = 6 minutes<br>
+Improved cleaning time = 2 minutes<br>
+Reduction = [(6 − 2) / 6] × 100 = 66.7%
+</div>
+<p><strong>Recommended Improvement:</strong> Add a removable intake filter, simple cleaning mechanism, and storage hook.</p>
+<p><strong>Evaluation:</strong> Measure filter removal, cleaning, and reinstallation times.</p>
+<p><strong>Safety Note:</strong> Cleaning should occur only when the dryer is unplugged and cool.</p>
+</div>
+
+<div class="question">
+<h3>Question 20: How can the overall design improve comfort, safety, efficiency, and satisfaction?</h3>
+<p><strong>Answer:</strong> BetterUse Engineering recommends combining the ergonomic improvements identified throughout this study.</p>
+
+<h3>Engineering Comparison</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Design Factor</th><th>Existing Design (Example)</th><th>Proposed Design</th></tr>
+<tr><td>Weight</td><td>0.80 kg</td><td>0.55 kg</td></tr>
+<tr><td>Wrist torque</td><td>0.942 N·m</td><td>0.378 N·m</td></tr>
+<tr><td>Noise</td><td>85 dB</td><td>75 dB</td></tr>
+<tr><td>Wrist deviation</td><td>30°</td><td>10°</td></tr>
+<tr><td>Handle diameter</td><td>To be measured</td><td>35 mm target</td></tr>
+<tr><td>Surface temperature</td><td>48°C</td><td>35°C</td></tr>
+<tr><td>Button travel</td><td>60 mm</td><td>30 mm</td></tr>
+<tr><td>Cleaning time</td><td>6 minutes</td><td>2 minutes</td></tr>
+<tr><td>Hands-free stand</td><td>Not available</td><td>Adjustable stand</td></tr>
+</table>
+</div>
+
+<p>All values are illustrative assumptions or proposed targets, not actual test results.</p>
+
+<p><strong>Recommended Improvements:</strong></p>
+<ol>
+<li>Reduce product weight.</li>
+<li>Improve weight distribution.</li>
+<li>Provide a comfortable non-slip handle.</li>
+<li>Make controls easier to reach.</li>
+<li>Reduce motor and fan noise.</li>
+<li>Improve insulation and overheating protection.</li>
+<li>Add a protective air intake mesh.</li>
+<li>Provide an adjustable hands-free stand.</li>
+<li>Use a flexible power cord.</li>
+<li>Make the filter easy to remove and clean.</li>
+</ol>
+<p><strong>Evaluation:</strong> Conduct a usability study measuring weight, wrist posture, noise, temperature, task time, grip force, errors, and user comfort.</p>
+</div>
+
+<div class="picture-slot">🎀 Figure 5 — Adjustable Hands-Free Stand (Picture to be added)</div>
+
+<h3>Section E: Engineering Summary</h3>
+<p>Human-Centered Design focuses on meeting the needs of different users. Reducing physical effort, improving accessibility, and adding hands-free support may make the hair dryer more comfortable and easier to use. Physical testing is required to verify the proposed benefits.</p>
+
+</section>
+
+<section class="section" id="recommendations">
+<h2>6. Final Engineering Recommendations</h2>
+
+<h3>6.1 Reduce Weight and Arm Fatigue</h3>
+<p>The hair dryer should be lighter and better balanced to reduce the physical effort required during use.</p>
+<p>Our proposed design reduces the weight from 0.80 kg to 0.55 kg, representing a 31.25% reduction.</p>
+<p>We also recommend moving the center of mass closer to the handle to reduce wrist torque.</p>
+
+<h3>6.2 Improve Handle and Grip Design</h3>
+<p>The handle should be comfortable for users with different hand sizes.</p>
+<p>We recommend a rounded handle with a proposed diameter of 35 mm, a textured non-slip surface, and a shape that supports a natural wrist position.</p>
+
+<h3>6.3 Improve Buttons and Controls</h3>
+<p>The power, temperature, and airflow buttons should be easy to reach without changing the user's grip.</p>
+<p>We recommend clear labels, separate controls, and tactile feedback to reduce operating errors.</p>
+
+<h3>6.4 Reduce Noise and Heat</h3>
+<p>We recommend using a quieter motor, improved fan blades, better thermal insulation, and an automatic overheating protection system.</p>
+<p>Our proposed noise target is 75 dB, compared with the illustrative existing value of 85 dB, under identical measurement conditions.</p>
+
+<h3>6.5 Add a Hands-Free Stand</h3>
+<p>One of our most important recommendations is an adjustable hands-free stand.</p>
+<p>This stand would allow users to dry and style their hair without continuously holding the hair dryer.</p>
+<p>For example, reducing handheld time from 15 minutes to 5 minutes would reduce handheld duration by 66.7%.</p>
+<p>The stand must be stable, heat-resistant, and securely attached to the hair dryer.</p>
+
+<h3>6.6 Improve Maintenance and Accessibility</h3>
+<p>The improved hair dryer should include a removable air intake filter, a flexible power cord, and controls that are comfortable for left-handed and right-handed users.</p>
+<p>These features can make the product easier to clean, maintain, and operate.</p>
+</section>
+
+<section class="section" id="validation">
+<h2>7. Engineering Validation Plan</h2>
+<p>Before manufacturing the improved hair dryer, BetterUse Engineering should test the proposed design.</p>
+<ol>
+<li>Select a representative group of users with different hand sizes and abilities.</li>
+<li>Measure the existing hair dryer's weight, wrist torque, noise, and surface temperature.</li>
+<li>Ask participants to perform the same drying and styling tasks.</li>
+<li>Record wrist angles, grip changes, task completion times, and user comfort ratings.</li>
+<li>Repeat the tests with the improved design.</li>
+<li>Calculate the percentage change for each performance measurement.</li>
+<li>Check electrical and thermal safety requirements.</li>
+<li>Use the results to make additional design improvements.</li>
+</ol>
+
+<p>The general percentage change formula is:</p>
+<div class="formula">
+Percentage Change = [(New Value − Original Value) / Original Value] × 100
+</div>
+
+<p>For measurements where lower values are better:</p>
+<div class="formula">
+Percentage Reduction = [(Original Value − New Value) / Original Value] × 100
+</div>
+
+<p>The same testing procedure should be repeated under comparable conditions to obtain reliable results.</p>
+</section>
+
+<section class="section" id="conclusion">
+<h2>8. Final Conclusion</h2>
+<p>In this midterm project, I analyzed the ergonomic design of a handheld hair dryer using 20 Human Factors Engineering questions.</p>
+<p>The analysis focused on weight, wrist posture, handle design, noise, heat, safety, accessibility, and usability.</p>
+<p>The main ergonomic problems identified were arm fatigue, uncomfortable gripping, wrist strain, loud noise, and difficulty with one-handed styling.</p>
+<p>To improve the product, BetterUse Engineering proposed a lighter hair dryer, a better-balanced design, a comfortable non-slip handle, easier controls, improved safety features, and an adjustable hands-free stand.</p>
+<p>Engineering equations were used to compare gravitational force, wrist torque, contact pressure, noise intensity, and other performance measurements.</p>
+<p>The calculations demonstrate the potential benefits of the proposed design changes. However, the numerical examples are based on engineering assumptions rather than completed physical experiments.</p>
+<p>Future user testing will be necessary to verify the improvements and confirm product safety.</p>
+<p><strong>Overall, this project demonstrates how Human Factors Engineering and Human-Centered Design can help engineers develop products that are safer, more comfortable, and easier to use.</strong></p>
+</section>
+
+<section class="section" id="references">
+<h2>9. References</h2>
+<ol>
+<li>
+Centers for Disease Control and Prevention (CDC), National Institute for Occupational Safety and Health (NIOSH).
+<em>Step 1: Identify Risk Factors — Ergonomics.</em>
+<a href="https://www.cdc.gov/niosh/ergonomics/ergo-programs/risk-factors.html" target="_blank" rel="noopener noreferrer">CDC NIOSH Resource</a>.
+</li>
+<li>
+Occupational Safety and Health Administration (OSHA).
+<em>OSHA Technical Manual, Section III, Chapter 5: Noise.</em>
+<a href="https://www.osha.gov/otm/section-3-health-hazards/chapter-5" target="_blank" rel="noopener noreferrer">OSHA Noise Manual</a>.
+</li>
+<li>
+International Organization for Standardization (ISO).
+<em>ISO 9241-210:2019 — Ergonomics of Human-System Interaction: Human-Centred Design for Interactive Systems.</em>
+<a href="https://www.iso.org/standard/77520.html" target="_blank" rel="noopener noreferrer">ISO Standard</a>.
+</li>
+<li>
+National Institute of Standards and Technology (NIST).
+<em>Human Centered Design (HCD).</em>
+<a href="https://www.nist.gov/itl/iad/human-centered-technologies/human-factors-human-centered-design" target="_blank" rel="noopener noreferrer">NIST Resource</a>.
+</li>
+<li>
+BetterUse Engineering.
+<em>Handheld Hair Dryer Ergonomic Design Analysis.</em>
+IE 355 course project, 2026.
+</li>
+</ol>
+
+<div class="note">
+<strong>Engineering Data Note:</strong>
+All example measurements, performance comparisons, and design targets
+in this report are illustrative. No physical testing is claimed.
+Actual design performance must be confirmed through controlled experiments.
+</div>
+</section>
+
+<a class="back-button" href="index.html">♡ Back to Assignments</a>
+<p class="footer">🎀 BetterUse Engineering — IE 355 Human Factors Engineering 🎀</p>
+
+</div>
+</div>
+</body>
+</html>
